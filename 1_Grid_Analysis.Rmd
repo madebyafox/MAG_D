@@ -142,14 +142,29 @@ statsConstructs(p4)
 
 
 
-### Construct Correlations
+#### Construct Correlations
 
 ```{r construct-correlations-p4}
 constructCor(g_master)
 ```
-## ELEMENT ANALYSIS
 
-### Describe Elements
+
+#### Construct Clustering
+```{r construct-clustering-p4}
+
+# calculate cluster analysis
+# https://docs.openrepgrid.org/articles/web/clustering.html
+cluster(p4, along =1, #1=constructs, 2 = elements, 0 = both (default)
+        dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        cex = 1, lab.cex = 1)
+
+```
+
+### ELEMENT ANALYSIS
+
+#### Describe Elements
 ```{r describe-elements-p4}
 
 # calculate descriptive statistics 
@@ -163,11 +178,35 @@ descriptives$element <- rownames(descriptives) #add element name to df
 
 ```
 
-### Element Correlations
+#### Element Correlations
 ```{r correlations-elements-p4}
 
 elementCor(g_master)
 ```
+
+
+
+#### Element Clustering
+```{r element-clustering-p4}
+
+# calculate cluster analysis
+# https://docs.openrepgrid.org/articles/web/clustering.html
+cluster(p4, along = 2, #1=constructs, 2 = elements, 0 = both (default)
+        dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        cex = 1, lab.cex = 1)
+
+```
+
+```{r elements-bertin-b4}
+
+bertinCluster(p4,
+              type="rectangle", draw.axis = FALSE)
+
+```
+
+
 
 # GROUP LEVEL
 
@@ -184,14 +223,14 @@ statsConstructs(g_master)
 
 
 
-### Construct Correlations
+#### Construct Correlations
 
 ```{r master-construct-correlations}
 constructCor(g_master)
 ```
-## ELEMENT ANALYSIS
+### ELEMENT ANALYSIS
 
-### Describe Elements
+#### Describe Elements
 ```{r describe-master-elements}
 
 # calculate descriptive statistics 
@@ -205,8 +244,31 @@ descriptives$element <- rownames(descriptives) #add element name to df
 
 ```
 
-### Element Correlations
+#### Element Correlations
 ```{r master-correlations-elements}
 
 elementCor(g_master)
+```
+
+
+
+#### Element Clustering
+```{r element-clustering-master}
+
+# calculate cluster analysis
+# https://docs.openrepgrid.org/articles/web/clustering.html
+cluster(g_master, along = 2, #1=constructs, 2 = elements, 0 = both (default)
+        dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        cex = 1, lab.cex = 1)
+```
+
+```{r elements-bertin-master}
+
+bertinCluster(g_master,
+              type="rectangle", draw.axis = FALSE)
+
+```
+
 ```
