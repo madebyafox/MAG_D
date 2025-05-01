@@ -105,23 +105,108 @@ p12 <- importExcel(file= "data/participants/continuous/P12_Clean.xlsx")
 p13 <- importExcel(file= "data/participants/continuous/P13_Clean.xlsx")
 p14 <- importExcel(file= "data/participants/continuous/P14_Clean.xlsx")
 
+```
+
+### Construct SuperGrids 
+
+While a single (repertory) _Grid_ contains data for an individual participant, a _SuperGrid_ contains data for multiple participants. In the case of this study, the same elements were shown to all participants, and thus SuperGrids can be constructed via simple concatenation (i.e. rbind) of individual participant grids. 
+
+```{r supergrids}
+
+## DESIGNER SuperGrid
 
 
+
+## RESEARCHER SuperGrid
+
+
+## MASTER SuperGrid
+g_master <- p4+p5+p8+p9+p10+p11+p12+p13+p14
+
+# is.repgrid(g_master) #verify is wff grid
 
 ```
 
 # PARTICIPANT-LEVEL
 
 ## P04
-```{r p04}
 
+### CONSTRUCT ANALYSIS
 
-## Descriptive Statistics for CONSTRUCTS
+```{r describe-constructs-p4}
 statsConstructs(p4)
 
-## Descriptive Statitics for ELEMENTS
-statsElements(p4)
+## ARF TODO reformat as df to get ridgeplot of histograms w/ constructs as rows
 ```
 
 
+
+
+### Construct Correlations
+
+```{r construct-correlations-p4}
+constructCor(g_master)
+```
+## ELEMENT ANALYSIS
+
+### Describe Elements
+```{r describe-elements-p4}
+
+# calculate descriptive statistics 
+(descriptives <- statsElements(g_master))
+descriptives$element <- rownames(descriptives) #add element name to df
+
+
+## ARF TODO reform as dfs to get ridgeplot of elements
+#visualize distributions
+# descriptives %>% ggplot(aes(x=))
+
+```
+
+### Element Correlations
+```{r correlations-elements-p4}
+
+elementCor(g_master)
+```
+
+# GROUP LEVEL
+
+## ALL PARTICIPANTS
+
+### CONSTRUCT ANALYSIS
+
+```{r describe-master-constructs}
+statsConstructs(g_master)
+
+## ARF TODO reformat as df to get ridgeplot of histograms w/ constructs as rows
+```
+
+
+
+
+### Construct Correlations
+
+```{r master-construct-correlations}
+constructCor(g_master)
+```
+## ELEMENT ANALYSIS
+
+### Describe Elements
+```{r describe-master-elements}
+
+# calculate descriptive statistics 
+(descriptives <- statsElements(g_master))
+descriptives$element <- rownames(descriptives) #add element name to df
+
+
+## ARF TODO reform as dfs to get ridgeplot of elements
+#visualize distributions
+# descriptives %>% ggplot(aes(x=))
+
+```
+
+### Element Correlations
+```{r master-correlations-elements}
+
+elementCor(g_master)
 ```
