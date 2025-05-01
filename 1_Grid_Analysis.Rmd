@@ -1,0 +1,127 @@
+---
+title: "Visualization Attitudes via Repertory Grid"
+author: "Amy R Fox & Dana Hua"
+date: "2024-05-01"
+output:
+  html_document:
+    theme: cosmo
+    code_folding: hide
+    fig_caption: yes
+    number_sections: no
+    toc: yes
+    toc_float:
+      collapsed: yes
+      smooth_scroll: yes
+    toc_depth: 6
+  pdf_document:
+    toc: yes
+    toc_depth: '5'
+always_allow_html: yes
+font-family: DejaVu Sans
+mainfont: DejaVu Sans
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+
+# SETUP
+
+### Import Packages
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+#UTILITIES
+library(Hmisc) # %nin% operator
+library(psych) #describe() & efa
+library(tidyverse) #all the things
+library(magrittr) #special pipes like %<>%
+library(summarytools) #data quality
+library(lubridate) #dealing with dates
+
+
+#VIZ
+library(ggformula) #regression syntax viz
+library(ggstatsplot) #dummies
+library(gghalves) #half boxplots 
+library(GGally) #extends ggplot for EDA 
+library(corrplot) #sophisticated correlation plots
+library(ggeasy) #easy labelling
+library(ggh4x) #guides [dual axes]
+library(patchwork) #multi-plot layout
+library(ggdist) #raincloud plots and other distributionals
+library(viridis) #color palettes
+library(RColorBrewer) #color palettes
+library(plotly) # interactive graphs
+library(paletteer) #more palettes
+library(interactions) ##easier regression ixn plots.srlsy
+library(tidygraph)
+
+#ANALYSIS
+library(OpenRepGrid) #https://docs.openrepgrid.org/index.html
+
+#MODELLING
+# library(jtools) #Social Science regression utilities
+# library(easystats) #modelling helpers
+# library(see)
+# library(sjPlot)
+# library(lme4)
+# library(lmerTest) #for CIs in glmer
+# # library(mixed) ## utilities for glmers 
+# library(jmv) ## jamovi EFA
+
+
+#STATISTICAL TESTS 
+# library(kSamples) #AD K-SAMPLE TEST (for distribution comparison)
+# library(rstatix) #FRIEDMAN'S TESTS and effect sizes 
+
+#CONFIG
+options(readr.show_col_types = FALSE) #don't show coltypes on read_csv
+
+
+## IMPORTANT 
+# GRAPH_SAVE = TRUE #set to true to generate all the SD graphs and save to folders 
+# source("graphing_functions.R") #import graphing palettes and custom functions
+
+```
+### Import Data
+
+```{r import-data}
+
+#example grid from package
+example <- bell2010
+e2 <- mackay1992
+
+## load grid (continuous constructs only) for each participant 
+## #importExcel from OpenRepGrid package, creates S4 object 
+p4 <-  importExcel(file= "data/participants/continuous/P04_Clean.xlsx")
+p5 <-  importExcel(file= "data/participants/continuous/P05_Clean.xlsx")
+p8 <-  importExcel(file= "data/participants/continuous/P08_Clean.xlsx")
+p9 <-  importExcel(file= "data/participants/continuous/P09_Clean.xlsx")
+p10 <- importExcel(file= "data/participants/continuous/P10_Clean.xlsx")
+p11 <- importExcel(file= "data/participants/continuous/P11_Clean.xlsx")
+p12 <- importExcel(file= "data/participants/continuous/P12_Clean.xlsx")
+p13 <- importExcel(file= "data/participants/continuous/P13_Clean.xlsx")
+p14 <- importExcel(file= "data/participants/continuous/P14_Clean.xlsx")
+
+
+
+
+```
+
+# PARTICIPANT-LEVEL
+
+## P04
+```{r p04}
+
+
+## Descriptive Statistics for CONSTRUCTS
+statsConstructs(p4)
+
+## Descriptive Statitics for ELEMENTS
+statsElements(p4)
+```
+
+
+```
