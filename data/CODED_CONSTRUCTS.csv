@@ -1,0 +1,264 @@
+PID,PLATFORM,1_CAREBEAR_BARS,2_LADY_LINE,3_BULLET_BARS,3_CARTOMAP,4_MAN_INFO,5_PENGUIN_DISTS,6_HISTO_DIST,7_IXN_EBARS,8_IXN_SLOPE,9_BAYES_RIDGES,LEFT POLE,RIGHT POLE,LEFT_SCALE,RIGHT_SCALE,SAMPLE,CONSTRUCT_TYPE,MATCH,CODE_DH,CODE_AF,CODE_NEGOTIATED,CODE_FINAL,CODE_STANDARD,FIRST,SECOND,THIRD,REFLEXIVE,STANDARDIZED
+P4,Instagram,5,4,4,2,2,1,1,1,1,1,not biased,biased,1,5,RESEARCHER,NUMERIC,1,trustworthiness,artifact(bias),,artifact(bias),artifact(trust),artifact,trust,,,TRUE
+,Instagram,yes,yes,yes,yes,yes,no,no,no,no,no,has intent to convince of something?,,,,,CATEGORICAL,1,ulterior subjective intent,maker(intent(persuasive)),,maker(intent(persuasive)),maker(intent(persuasive)),maker,intent,persuasive,,FALSE
+,Instagram,other,other,other,other,other,self,self,self,self,self,collected data by themselves,,,,,CATEGORICAL,1,author skills,data(source(type)),,data(source(type)),data(source)),data,source,,,TRUE
+P4,Instagram,5,5,5,3,4,3,1,1,1,2,dry,sensational,1,5,RESEARCHER,NUMERIC,1,chart design,artifact(aesthetics(vibe)),,artifact(aesthetics(vibe)),artifact(design(vibe)),artifact,design,vibe,,TRUE
+,Instagram,Instagram,"Times, USA Today, not super high-brow but still news","news outlet that's a bit sensational (Times, USA Today, CNN)",WSJ/Economist/newspapery (more edu audience),generic website,science magazine,science journal,science journal,science journal,science journal,source,,,,,CATEGORICAL,1,distribution channel,mode(type),,mode(type),mode(type),mode,type,,,FALSE
+P4,Instagram,5,5,5,5,3,5,5,3,3,5,don't trust the data,trust the data,1,5,RESEARCHER,NUMERIC,1,trustworthiness,data(trust),,data(trust),data(trust),data,trust,,,FALSE
+P4,Instagram,1,1,5,2,2,5,5,5,5,5,don't believe the author's message,believe author's message,1,5,RESEARCHER,NUMERIC,0,trustworthiness,self-artifact(efficacy),author(trust),author(trust),maker(trust),maker,trust,,,TRUE
+,Instagram,casual,casual,casual,casual,casual,workplace,workplace,workplace,workplace,workplace,encounter,,,,,CATEGORICAL,1,chart design,mode(type),artifact(register),artifact(register),artifact(register),artifact,register,,,FALSE
+P4,Instagram,1,1,1,4,3,4,5,4,4,5,audience education level (low),high edu level,1,5,RESEARCHER,NUMERIC,1,audience characteristics,audience(education(level)),audience(skill(general)),audience(skill(general)),audience(skill),audience,skill,,,TRUE
+P4,Instagram,1,1,1,4,2,4,1,1,1,2,stop,scroll,1,5,RESEARCHER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(encounter)),,self-artifact(behavior-intent(encounter)),artifact(behavior(encounter)),artifact,behavior,encounter,T,TRUE
+,Reddit/X,2010s,late 1980s,2010s,last 10 years,2010-2015 ish,last 5 years,2000s,last 10 years (post 2015),1980s-1990s,2010s or even last 5 years,timescale of when it was created,,,,,CATEGORICAL,1,distribution channel,artifact(age),,artifact(age),artifact(age),artifact,age,,,FALSE
+,Reddit/X,"powerpoint, not sophisicated software",Illustrator,"Illustrator, Photoshop, professional tool","in house charting library just for this, very sophisticated software","very specific design tool, not ppt","R, python","SPSS, R?, statistical programming lang (python?)",ggplot,R or excel,ggplot,tools used,,,,,CATEGORICAL,1,distribution channel,tool(type),,tool(type),tool(type),tool,type,,,FALSE
+P5,Reddit/X,2,4.5,3,5,3,2.5,1.5,1.5,1.5,1.5,not professional designers,professional designers,1,5,RESEARCHER,NUMERIC,0,author skills,maker(vocation),author(skill(design)),author(skill(design)),maker(skill(design)),maker,skill,design,,TRUE
+P5,Reddit/X,1,4.5,2,5,1,5,1,2.5,2.5,3.5,no skin in the game (no thought put into making the design of the viz),skin in the game (more thought put into making the design),1,5,RESEARCHER,NUMERIC,1,author characteristics,maker(dilligence),,maker(dilligence),maker(dilligence),maker,dilligence,,,FALSE
+P5,Reddit/X,5,3,2,2,1,1,1,1,1,1,informative,persuasive,1,5,RESEARCHER,NUMERIC,1,ulterior subjective intent,maker(intent),,maker(intent),maker(intent),maker,intent,,,FALSE
+,Reddit/X,make viewer angry; provocation,persuade diamonds not cool anymore; cultural reference to diamond guy,informational w/out knowing source/context; could also be persuasive showing how much US is spending,to provide information,purely informational,teaching/educational,convey results,convey results,convey results,convey results,purpose (categorical),,,,,CATEGORICAL,1,ulterior subjective intent,artifact(intent),,artifact(intent),artifact(intent),artifact,intent,,,FALSE
+P5,Reddit/X,1,5,5,5,5,5,5,5,5,5,don't trust the data,trust the data,1,5,RESEARCHER,NUMERIC,1,trustworthiness,data(trust),,data(trust),data(trust),data,trust,,,FALSE
+P5,Reddit/X,1,5,3,5,3,5,5,5,5,5,don't turst the author,trust the author,1,5,RESEARCHER,NUMERIC,1,trustworthiness,maker(trust),,maker(trust),maker(trust),maker,trust,,,FALSE
+P5,Reddit/X,5,5,5,5,2,5,4,5,4,4.5,low author competancy,high author competancy,1,5,RESEARCHER,NUMERIC,1,author skills,maker(skill),,maker(skill),maker(skill),maker,skill,,,FALSE
+,Reddit/X,"social media/ugly pamphlet; FB, Twitter, Reddit",TIME magazin,"paper, report, thinktank",WSJ,"paper report, thinktank, consulting company, nonprofit research company",educational plotting website,academic journals,academic journals,academic journals,academic journals,where you would see them,,,,,CATEGORICAL,1,distribution channel,mode(type),,mode(type),mode(type),mode,type,,,FALSE
+P5,Reddit/X,1,4,3,4,3,5,5,5,4,5,general audience,niche audience,1,5,RESEARCHER,NUMERIC,1,audience characteristics,audience(type),,audience(type),audience(type),audience,type,,,FALSE
+P5,Reddit/X,1,3.5,3,4.5,3,4,5,4,4,5,less educated audience,more educated audience,1,5,RESEARCHER,NUMERIC,1,audience characteristics,audience(education(level)),audience(skill(general)),audience(skill(general)),audience(skill),audience,skill,,,TRUE
+P5,Reddit/X,1.5,4,2,5,1,3.5,1,1,1,1,ignore,stop and look,1,5,RESEARCHER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(encounter)),,self-artifact(behavior-intent(encounter)),artifact(behavior(encounter)),artifact,behavior,encounter,T,TRUE
+,Reddit/X,general random person (layperson),professional visualization person,professional graphic designer,professional visualization person,contractor/team of professional visualization people,"individual, could be academic, writes libraries and teaching about it, at least grad level",undergrad/grad student/lazy prof,grad student,old-school prof/old grad school,modern-day grad student/junior prof,job role,,,,,CATEGORICAL,1,audience characteristics,maker(vocation),,maker(vocation),maker(vocation),maker,vocation,,,FALSE
+P6,Instagram,1,1,2,3,3,5,4,4,4,5,viewer no training in data visualization,viewer training in data visualization,1,5,RESEARCHER,NUMERIC,0,audience characteristics,audience(skill(visualization)),audience(skill(data-literacy)),audience(skill(data-literacy)),audience(skill(dataliteracy)),audience,skill,dataliteracy,,TRUE
+P6,Instagram,5,5,4,3,3,4,3,5,4,5,target audience would not want to look,target audience want to look at it,1,5,RESEARCHER,NUMERIC,0,audience characteristics,artifact(salience),audience(behavior-intent(encounter)),audience(behavior-intent(encounter)),audience(behavior(encounter)),audience,behavior,encounter,,TRUE
+P6,Instagram,3,2,2,4,3,5,2,4,4,5,participant would not want to look,participant would want to look,1,5,RESEARCHER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(encounter)),,self-artifact(behavior-intent(encounter)),artifact(behavior(encounter)),artifact,behavior,encounter,T,TRUE
+,Instagram,general public/community orgs in pride/DEI,general public,"geenral public, not policy makers",general public,"general public, specific audience interested in tax",academic people who care about the specific topic,experts in field/general audience,expert in field,expert in field,expert in field,target audience ,,,,,CATEGORICAL,1,audience characteristics,audience(type),,audience(type),audience(type),audience,type,,,FALSE
+,Instagram,magaine/instagram feed (2000s),"girl's/diamond magazine, textbook (late 90s)",magazine,"textbook, instagram feed, WSJ",presentation slide about tax,"conference peresentation, journal article if no penguins",journal articles from 80s-90s,psychology/APA 7 journal article 2000s ish or post 2000s,journal article/textbook (2000s-2010s),textbook/journal article (after 2010),source (where it came from),,,,,CATEGORICAL,0,distribution channel,mode(type),mode(type),mode(type),mode(type),mode,type,,,FALSE
+P6,Instagram,2,5,3,3,4,4,1,3,2,4,author has less design skills,more design skills,1,5,RESEARCHER,NUMERIC,0,author skills,maker(skill(design)),maker(skill(design)),maker(skill(design)),maker(skill(design)),maker,skill,design,,FALSE
+P6,Instagram,1,1,1,3,2,5,3,4,4,5,author has less statistics skills,more statistics skills,1,5,RESEARCHER,NUMERIC,1,author skills,maker(skill(statistics)),,maker(skill(statistics)),maker(skill(statistics)),maker,skill,statistics,,FALSE
+,Instagram,handmade (wrote & drawn by self),computer,photoshop or similar,specialized software in field,"powerpoint or similar, not keybote or vector-based","R/Python, specific plotting/graphing package","SPSS, stada, R","R, ggplot","(latex for paper), Excel, SPSS, not R","R, Python (matplot), Excel",tools/ how made,,,,,CATEGORICAL,1,distribution channel,tool(type),,tool(type),tool(type),tool,type,,,FALSE
+P6,Instagram,4,5,3,2,3,3,2,3,4,4,author not effective in conveying message,author effective in conveying message,1,5,RESEARCHER,NUMERIC,0,author skills,artifact(efficacy),maker(skill(communication),maker(skill(communication),maker(skill(communication),maker,skill,communication,,FALSE
+,Twitter/X,"blog/social media (TikTok, not IG)",old magazine (pre-internet),news article in military/int. section,news magazine (national),presentation slide,organization report,academic journal,academic journal,academic journal,academic journal,source (where to see),,,,,CATEGORICAL,1,distribution channel,mode(type),,mode(type),mode(type),mode,type,,,FALSE
+,Twitter/X,5 years ago,before 1990,2014,at least 5 years ago,2010,within 5 years,10 years ago,within 5-10 years,within 10 years,within 5 years,timescale,,,,,CATEGORICAL,1,distribution channel,artifact(age),,artifact(age),artifact(age),artifact,age,,,FALSE
+,Twitter/X,show inconsistent behavior of companies,just wanted to make a fancy chart,persuasive way of showing military spending,"explain how bad the drought is, highlight how drought is threatening corn crops",trying to help us understand how much tax we pay,one panel in figure for biology/animal study paper,desc plot for some sort of physica article/report,fig in exp exploring 2 conditions (visual features on perception),part of fig in paper demonstrating how visual features impact interpretation of data,study about the impact of different visualization methods,purpose (why it was made/how it was used),,,,,CATEGORICAL,1,ulterior subjective intent,maker(intent),,maker(intent),maker(intent),maker,intent,,,FALSE
+,Twitter/X,"not as advanced as Illustrator, low-entry sketching (handwriting)",old sketching tool,professional journalist tool (from news org),professional journalist tool (from news org),presentation template,R + Illustrator (or other image processing),similar to SPSS,"R, not Python",SPSS of by manual click software,"R, not Python",how made (tool),,,,,CATEGORICAL,1,distribution channel,tool(type),,tool(type),tool(type),tool,type,,,FALSE
+P7,Twitter/X,1,3,4,4,2,5,5,5,5,5,informal,formal,1,5,RESEARCHER,NUMERIC,0,chart design,artifact(aesthetics(vibe)),artifact(register),artifact(register),artifact(register),artifact,register,,,FALSE
+,Twitter/X,social media online,"old-fashioned magazine readers (40 years ago, mom generation)",newspaper readers,newspaper readers,uion members,academia,academia,academia,academia,academia,target audience,,,,,CATEGORICAL,1,audience characteristics,audience(type),,audience(type),audience(type),audience,type,,,FALSE
+P7,Twitter/X,5,5,5,5,3,3,1,2,2,2,does not care about design,care about design,1,5,RESEARCHER,NUMERIC,1,author characteristics,maker(dilligence(design)),,maker(dilligence(design)),maker(dilligence(design)),maker,dilligence,design,,FALSE
+P7,Twitter/X,1,2,4,4,1,5,5,5,5,5,does not care about data,care about data,1,5,RESEARCHER,NUMERIC,1,author characteristics,maker(dilligence(data)),,maker(dilligence(data)),maker(dilligence(data)),maker,dilligence,data,,FALSE
+P7,Twitter/X,3,5,5,5,2,5,1,2,1,2,author's design skills (low),(high),1,5,RESEARCHER,NUMERIC,1,author skills,maker(skill(design)),,maker(skill(design)),maker(skill(design)),maker,skill,design,,FALSE
+P7,Twitter/X,4,5,5,5,5,4,1,2,2,3,author did not try,author tried,1,5,RESEARCHER,NUMERIC,1,author characteristics,maker(dilligence),,maker(dilligence),maker(dilligence),maker,dilligence,,,FALSE
+P7,Twitter/X,2,1,1,1,3,1,3,2,1,3,would not want to change based on context,would want to change,1,5,RESEARCHER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(re-design)),,self-artifact(behavior-intent(re-design)),artifact(behavior(redesign)),artifact,behavior,redesign,T,TRUE
+P7,Twitter/X,5,3,1,1,3,1,4,4,4,4,topic not interesting,topic interesting,1,5,RESEARCHER,NUMERIC,1,personal engagement,self-data(topic(interest)),,self-data(topic(interest)),data(topic(interest)),data,topic,interest,T,TRUE
+P7,Twitter/X,4,5,5,5,2,4,1,1,1,1,visualization design not interesting,visualization design interesting,1,5,RESEARCHER,NUMERIC,1,personal engagement,artifact(salience),,artifact(salience),artifact(design(salience)),artifact,design,salience,T,TRUE
+P7,Twitter/X,3,3,4,4,2,3,1,1,1,3,how long to look at chart (in seconds),,1,5,RESEARCHER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(look-time)),self-artifact(behavior-intent(encounter)),self-artifact(behavior-intent(encounter)),artifact(behavior(encounter)),artifact,behavior,encounter,T,TRUE
+P8,Instagram,5,1,5,5,4,2,3,2,4,2,not clear overall (hard to understand),clear overall (easy to understand),1,5,DESIGNER,NUMERIC,1,personal understanding,artifact(comprehensibility),TODO,TODO,artifact(usability(clarity)),artifact,usability,clarity,T,TRUE
+P8,Instagram,3,1,3,5,3,5,1,1,4,4,very ugly (personal preference),very nice,1,5,DESIGNER,NUMERIC,1,personal engagement,artifact(aesthetics(appeal)),,artifact(aesthetics(appeal)),artifact(design(appeal)),artifact,design,appeal,T,TRUE
+P8,Instagram,2,1,2,4,3,5,3,5,4,5,author low data-analysis skills,high data-analysis skills,1,5,DESIGNER,NUMERIC,1,author skills,maker(skill(data)),,maker(skill(data)),maker(skill(data)),maker,skill,data,,FALSE
+P8,Instagram,4,1,4,5,4,5,2,2,3,5,author low data-viz skills,high data-viz skills,1,5,DESIGNER,NUMERIC,1,author skills,maker(skill(visualization)),,maker(skill(visualization)),maker(skill(visualization)),maker,skill,visualization,,FALSE
+P8,Instagram,5,5,4,5,4,2,1,1,3,3,author low communication skills,author high communication skills,1,5,DESIGNER,NUMERIC,1,author skills,maker(skill(communication)),,maker(skill(communication)),maker(skill(communication)),maker,skill,communication,,FALSE
+P8,Instagram,5,5,5,4,4,3,1,1,1,2,low engagement (scroll past),high engagement (stop and look),1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(encounter)),,self-artifact(behavior-intent(encounter)),artifact(behavior(encounter)),artifact,behavior,encounter,T,TRUE
+P8,Instagram,3,2,4,3,4,3,5,1,5,2,low accessibility to visually impaired readers,high accessibility to visually impaired readers,1,5,DESIGNER,NUMERIC,1,author skills,artifact(accessibility),,artifact(accessibility),artifact(usability(accessibility)),artifact,usability,accessibility,,TRUE
+,Instagram,Established American Newspaper,80s American Magazine,Media outlets,Reuters graphics,Media outlets,the Pudding,scientific article,scientific article,scientific article,"articles but slightly more designish, some slides",source,,,,,CATEGORICAL,1,distribution channel,mode(type),,mode(type),mode(type),mode,type,,,FALSE
+P8,Instagram,5,5,5,4,4,3,1,1,1,1,Niche audience,General audience,1,5,DESIGNER,NUMERIC,1,audience characteristics,audience(type),,audience(type),audience(type),audience,type,,,FALSE
+P8,Instagram,1,1,1,2,2,4,5,5,3,5,Audience low data literacy,Audience high data literacy,1,5,DESIGNER,NUMERIC,0,audience characteristics,audience(skill(data-literacy)),audience(skill(data-literacy)),audience(skill(data-literacy)),audience(skill(dataliteracy)),audience,skill,dataliteracy,,TRUE
+P8,Instagram,3,2,1,4,1,2,1,5,5,1,More informative,More call-to-action,1,5,DESIGNER,NUMERIC,1,ulterior subjective intent,maker(intent),,maker(intent),maker(intent),maker,intent,,,FALSE
+,Instagram,Mona Chalabi,Cartoonist,Graphic designer,dataviz designer with mapping skills,Dataviz designer,Designer,Researcher,Researcher,Researcher,Researcher,Author,,,,,CATEGORICAL,1,author characteristics,maker(type),maker(type),maker(type),maker(type),maker,type,,,FALSE
+P8,Instagram,4,1,1,3,2,2,5,5,5,5,Data collector and data designer are different people,Data collector and data designer are the same person,1,5,DESIGNER,NUMERIC,1,author skills,data(source(type)),,data(source(type)),data(source)),data,source,,,TRUE
+P8,Instagram,4,1,1,5,4,5,3,3,3,5,bad data representation,good data representation,1,5,DESIGNER,NUMERIC,0,trustworthiness,artifact(design(appropriateness)),artifact(design(data-appropriateness)),artifact(design(data-appropriateness)),artifact(design(appropriateness)),artifact,design,appropriateness,,TRUE
+P8,Instagram,3,1,2,5,4,4,4,4,4,5,not trustworthy,trustworthy,1,5,DESIGNER,NUMERIC,1,trustworthiness,artifact(trust),,artifact(trust),artifact(trust),artifact,trust,,,FALSE
+,Instagram/Linkedin,"News Article
+
+Social Media","News Article
+
+Social Media","News Article
+
+Social Media","News Article
+
+Social Media
+
+Annual Report","News Article  (NYT, Pentagram)
+
+Social Media","News Article
+
+Social Media
+
+Annual Report","Research Paper
+
+Technical Manual
+
+","Research Findings for a paper
+
+Technical
+
+","Research Findings for a paper
+
+Technical
+
+","News Article
+
+Social Media
+
+Annual Report
+
+Magazine",source (where published),,,,,CATEGORICAL,1,distribution channel,"mode, artifact(type, genre)",,"mode, artifact(type, genre)",mode(type),mode,type,,,TRUE
+P9,Instagram/Linkedin,3,4,5,5,5,4,2,3,2,3,would not spend time looking at,would spend time looking at,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(encounter)),,self-artifact(behavior-intent(encounter)),artifact(behavior(encounter)),artifact,behavior,encounter,T,TRUE
+P9,Instagram/Linkedin,4,4,5,5,5,4,2,2,2,2,niche audience,general audience,1,5,DESIGNER,NUMERIC,1,audience characteristics,audience(type),,audience(type),audience(type),audience,type,,,FALSE
+P9,Instagram/Linkedin,4,5,5,4,5,4,2,2,1,2,designer has less  design skills,designer has more design skills,1,5,DESIGNER,NUMERIC,1,author skills,maker(skill(design)),,maker(skill(design)),maker(skill(design)),maker,skill,design,,FALSE
+P9,Instagram/Linkedin,2,3,5,3,1,1,1,2,2,1,would not read contextual information,would read more contextual information,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(engage further)),,self-artifact(behavior-intent(engage further)),artifact(behavior(infoseek)),artifact,behavior,infoseek,T,TRUE
+P10,Instagram,1,1,1,1,4,2,3,5,2,5,easier to understand,harder to understand,1,5,DESIGNER,NUMERIC,1,personal understanding,artifact(comprehensibility),TODO,TODO,artifact(usability(effort)),artifact,usability,effort,T,TRUE
+P10,Instagram,5,5,5,5,5,4,1,2,1,2,scroll past,stop and look,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(encounter)),,self-artifact(behavior-intent(encounter)),artifact(behavior(encounter)),artifact,behavior,encounter,T,TRUE
+,Instagram,like react,like,like react,"like, save",like react,save,none,none,none,none but might save if the penguin one was not next to it,type of engagement,,,,,CATEGORICAL,1,personal engagement,self-artifact(behavior-intent(type)),,self-artifact(behavior-intent(type)),artifact(behavior(type)),artifact,behavior,type,T,TRUE
+P10,Instagram,2,2,3,5,1,5,1,1,1,1,less likely to save,more likely to save,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(save)),,self-artifact(behavior-intent(save)),artifact(behavior(save)),artifact,behavior,save,T,TRUE
+P10,Instagram,4,1,2,5,5,3,2,1,3,1,less likely to read contextual information,more likely to read,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(engage further)),,self-artifact(behavior-intent(engage further)),artifact(behavior(infoseek)),artifact,behavior,infoseek,T,TRUE
+P10,Instagram,3,5,5,5,5,3,1,1,1,1,less likely to “like” react,more likely to “like”,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(like/upvote)),,self-artifact(behavior-intent(like/upvote)),artifact(behavior(like/upvote)),artifact,behavior,like/upvote,T,TRUE
+,Instagram,"individual
+",individual,individual,team,individual who works for some corporation,science group or research team studying penguins,researchers,researchers,researchers,research team or scientist,author type,,,,,CATEGORICAL,1,author characteristics,maker(type),,maker(type),maker(type),maker,type,,,FALSE
+,Instagram,social media to promote their design/drawing profile,social media as an interesting idea to bring to life,LinkedIn to go with an interesting article,presentation,presentation,report,research publication,research publication,research publication,publication figure,intended use/purpose,,,,,CATEGORICAL,1,distribution channel,"mode, artifact(type, genre)",,"mode, artifact(type, genre)",mode(type),mode,type,,,TRUE
+,Instagram,"bar chart with excel, then opened in Ipad procreaste (or adobe illustrator with a nice font, but looks handwritten so mostl likely procreate)",illustrator + excel to plot line beforehand,illustrator for bullets and excel/flourish to chart the bars in a basic way frist,"qjs, arcjs online for map, illustrator for labels","excel, rawgraphs or fluorish, manually edited/combined in Illustrator","mix of tools: illustrations and adjustments in Adobe Illustrator, charts in python","python
+","excel, python, Adobe Acrobat/word to add teh title ATS boxes",excel,python or similar,how they were made (tools),,,,,CATEGORICAL,1,distribution channel,tool(type),,tool(type),tool(type),tool,type,,,FALSE
+P10,Instagram,3,4,4,5,3,3.5,1,2.5,2.5,2,author less data communication (design) skills,author more data communication (design) skills,1,5,DESIGNER,NUMERIC,1,author skills,maker(skill(design)),,maker(skill(design)),maker(skill(design)),maker,skill,design,,FALSE
+P10,Instagram,2,3,4,4,4,5,5,4,4,5,author less data analysis skills,author more data analysis skills,1,5,DESIGNER,NUMERIC,1,author skills,maker(skill(data)),,maker(skill(data)),maker(skill(data)),maker,skill,data,,FALSE
+,Instagram,2022,1985,2015,2018,2010,"sometime within last 5 years or anytime really, not super old, more modern than 1985",n/a,n/a,n/a,n/a,time published,,,,,CATEGORICAL,1,distribution channel,artifact(age),,artifact(age),artifact(age),artifact,age,,,FALSE
+P11,Reddit,1,1.2,3.2,3,2,1.8,5,4.8,5,4.5,"Publication source (Reddit) (3 = new york post)
+",publication source (Jstor),1,5,DESIGNER,NUMERIC,1,distribution channel,mode(type),,mode(type),mode(type),mode,type,,,FALSE
+P11,Reddit,3,5,4,5,5,5,5,5,5,5,not legible (no idea what it’s writing),legible (I can read it!),1,5,DESIGNER,NUMERIC,1,personal understanding,artifact(legibility),TODO,TODO,artifact(usability(legibility)),artifact,usability,legibility,T,TRUE
+P11,Reddit,4.5,5,4.5,5,4,4,2,1.5,2,2,not readable (no idea about the message),readable (I can understand it!),1,5,DESIGNER,NUMERIC,1,personal understanding,artifact(comprehensibility),TODO,TODO,artifact(usability(readability)),artifact,usability,readability,T,TRUE
+P11,Reddit,2,4,4,5,4,5,5,4,5,5,Not showcasing the data,Showcasing the data,1,5,DESIGNER,NUMERIC,0,ulterior subjective intent,artifact(focus(data)),artifact(intent(data)),artifact(intent(data)),artifact(intent(data)),artifact,intent,data,,FALSE
+P11,Reddit,5,5,4,4,5,3.5,2,2,2.5,2,Not tell a story with data,Tell a story with data (call for action),1,5,DESIGNER,NUMERIC,0,ulterior subjective intent,artifact(focus(story)),artifact(intent(narrative)),artifact(intent(narrative)),artifact(intent(narrative)),artifact,intent,narrative,,FALSE
+P11,Reddit,5,4,3,2,2.5,2,1,1,2,1.5,will not share,Share it with someone,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(sharing)),,self-artifact(behavior-intent(sharing)),artifact(behavior(sharing)),artifact,behavior,sharing,T,TRUE
+P11,Reddit,3,3,2,1,1,1,1,1,1.5,1,will not comment,Leave a comment,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(commenting)),,self-artifact(behavior-intent(commenting)),artifact(behavior(commenting)),artifact,behavior,commenting,T,TRUE
+P11,Reddit,5,5,5,4,3,3,1,1,1.5,1.5,will not upvote,will upvote,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(like/upvote)),,self-artifact(behavior-intent(like/upvote)),artifact(behavior(like/upvote)),artifact,behavior,like/upvote,T,TRUE
+P11,Reddit,5,4,4,2,3,3,1,1,1.5,1.5,keep scrolling,"stop and look
+",1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(encounter)),,self-artifact(behavior-intent(encounter)),artifact(behavior(encounter)),artifact,behavior,encounter,T,TRUE
+P11,Reddit,4.8,3.5,4.5,4,4,4.5,3,3,3,3,Poorly communicated,Communicated,1,5,DESIGNER,NUMERIC,0,author skills,artifact(efficacy),maker(skill(communication)),maker(skill(communication)),maker(skill(communication)),maker,skill,communication,,FALSE
+P11,Reddit,4,4.3,3.5,3.8,3.2,4,2,2,2.5,2.8,Design quality - bad,Design quality - Good,1,5,DESIGNER,NUMERIC,1,author skills,"artifact, maker(design(quality), skill(design))",,"artifact, maker(design(quality), skill(design))",maker(skill(design)),maker,skill,design,,TRUE
+P11,Reddit,3,3,4,4.3,4.2,4,5,5,5,5,Untrustworthy,Trustworthy,1,5,DESIGNER,NUMERIC,1,trustworthiness,artifact(trust),,artifact(trust),artifact(trust),artifact,trust,,,FALSE
+,Linkedin,social media platform,social media platform,"news publication 
+social media",news publication,more design-led publication than the missile,student testing out their data visualization skill,academic report,academic paper,data visualization guide,academic paper,publication source,,,,,CATEGORICAL,1,distribution channel,mode(type),,mode(type),mode(type),mode,type,,,FALSE
+,Linkedin,using visualization to report  a story,using visualization to report  a story,using visualization to report a story,using visualization to report a story,using visualization to report a story,student testing out their data visualization skill,visualizing stats to make them more accessible,visualizing stats to make them more accessible,explain how charts  should or shouldn’t be used,visualizing stats to make them more accessible,purpose,,,,,CATEGORICAL,1,ulterior subjective intent,maker(intent),,maker(intent),maker(intent),maker,intent,,,FALSE
+,Linkedin,general public,general public,general public,general public,general public,"tutors, employers",other academics,other academics,data viz designers and readers,other academics,audience,,,,,CATEGORICAL,1,audience characteristics,audience(type),,audience(type),audience(type),audience,type,,,FALSE
+P12,Linkedin,1,1,1.5,2,3,3,5,5,5,5,audience low stats skills,audience high stats skills,1,5,DESIGNER,NUMERIC,1,audience characteristics,audience(skill(statistics)),,audience(skill(statistics)),audience(skill(statistics)),audience,skill,statistics,,FALSE
+P12,Linkedin,5,5,5,3,3,3,1,1,1,3,more illustrative focus,more data chart type focus,1,5,DESIGNER,NUMERIC,0,chart design,artifact(focus(data><story)),artifact(intent),artifact(intent),artifact(intent),artifact,intent,,,FALSE
+P12,Linkedin,2,2,3,4,5,4,2,2,2,3,lower design quality,higher design quality,1,5,DESIGNER,NUMERIC,1,author skills,artifact(design(quality)),artifact(design(quality),artifact(design(quality),artifact(design(quality),artifact,design,quality,,FALSE
+P12,Linkedin,3,4,2,4,3,5,5,5,1,5,misleading,unbiased,1,5,DESIGNER,NUMERIC,1,ulterior subjective intent,artifact(bias),,artifact(bias),artifact(trust),artifact,trust,,,TRUE
+P12,Linkedin,2,3,3,5,5,5,4,4,1,5,not much thought put into chart type,thought put into chart type,1,5,DESIGNER,NUMERIC,1,author characteristics,maker(dilligence(design)),,maker(dilligence(design)),maker(dilligence(design)),maker,dilligence,design,,FALSE
+P12,Linkedin,5,5,5,5,5,4,2,2,5,4,not much thought put into storytelling,thought put into storytelling,1,5,DESIGNER,NUMERIC,1,ulterior subjective intent,maker(dilligence(storytelling)),,maker(dilligence(storytelling)),maker(dilligence(storytelling)),maker,dilligence,storytelling,,FALSE
+P12,Linkedin,1,1,3,3,3,4,5,5,4,5,author low stats skills,"author high stats skills
+",1,5,DESIGNER,NUMERIC,1,author characteristics,maker(skill(statistics)),,maker(skill(statistics)),maker(skill(statistics)),maker,skill,statistics,,FALSE
+,Linkedin,clipart,clipart,graphic design tool,"data viz tool like d3 (or something that uses it as a base), plot, flourish",graphic design tool,"data viz tool like d3 (or something that uses it as a base), plot, flourish",r studio,r studio,r studio,flourish,tools,,,,,CATEGORICAL,1,distribution channel,tool(type),,tool(type),tool(type),tool,type,,,FALSE
+,Linkedin,20 seconds,20 seconds,1-3 minutes,1-3 minutes,5 minutes,5 minutes,5 minutes,5 minutes,5 minutes,5 minutes,how long (for her) to interpret,,,,,CATEGORICAL,0,personal understanding,self-artifact(behavior-intent(reading-time)),TODO,TODO,artifact(usability(effort)),artifact,usability,effort,T,TRUE
+P12,Linkedin,1,1,3,3,5,3,3,2,5,3,scroll on,pause,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(encounter)),,self-artifact(behavior-intent(encounter)),artifact(behavior(encounter)),artifact,behavior,encounter,T,TRUE
+P12,Linkedin,1,1,2,5,1,5,1,5,2,5,color as decorative or nonexistent,color as a visual encoding,1,5,DESIGNER,NUMERIC,1,chart design,artifact(encoding(color(purpose))),artifact(design(encoding)),artifact(design(encoding)),artifact(design(encoding)),artifact,design,encoding,,FALSE
+,Instagram,instagram,"social media
+
+newspaper (old school)","digital publication (website)
+
+magazine","report
+
+newspaper
+
+magazine
+
+not social media","magazine
+
+pdf
+
+part of a presentation (powerpoint, slides for an event)",digital publication (digital magazine with graphic in the middle),"book 
+
+paper
+
+not a manual (unless technical)","book  (same spectrum of book as prev chart: something technical)
+
+paper
+
+","paper
+
+results of a research
+
+more scientific
+
+presentation on results","paper
+
+results of a research
+
+more scientific
+
+presentation on results",publication source,,,,,CATEGORICAL,1,distribution channel,"mode, artifact(type, genre)",,"mode, artifact(type, genre)",mode(type),mode,type,,,TRUE
+P13,Instagram,4,4,5,3,4,3,1,1,1,1,less time spent designing (labor),more time spent designing (labor),1,5,DESIGNER,NUMERIC,1,author characteristics,maker(process(time)),,maker(process(time)),maker(dilligence),maker,dilligence,,,TRUE
+P13,Instagram,5,5,3,3,5,3,1,2,2,3,less thought put into designing,more thought put into designing,1,5,DESIGNER,NUMERIC,1,author characteristics,maker(dilligence(design)),,maker(dilligence(design)),maker(dilligence(design)),maker,dilligence,design,,FALSE
+,Instagram,from companies and then combined with politicaian party data,"market source
+
+economy publication to make a journalistic piece",government or estimated,scientific,government,n/a,lab test (same designer and data collector),research (same designer and data collector),testing from lab (same designer and data collector),research results,where data came from,,,,,CATEGORICAL,1,trustworthiness,data(source(type)),,data(source(type)),data(source(type)),data,source,type,,FALSE
+P13,Instagram,5,5,5,4,4,3,5,3,5,2,less successful at conveying message,more successful at conveying message,1,5,DESIGNER,NUMERIC,0,author skills,artifact(efficacy),maker(skill(communication)),maker(skill(communication)),maker(skill(communication)),maker,skill,communication,,FALSE
+P13,Instagram,5,4,4,1,5,1,1,1,1,1,explanatory,call for action (want to change behavior),1,5,DESIGNER,NUMERIC,1,ulterior subjective intent,artifact(intent(inform><action)),,artifact(intent(inform><action)),artifact(intent)),artifact,intent,,,TRUE
+,Instagram,mona chalabi,"commissioned for newspaper/magazine
+
+commissioned artist","visual capitalist or someone in that universe
+
+commission for magazine","designer 
+(data provided by someone else and given to designer)
+
+commission to magazine","commissioned designer for magazine/newspaper
+
+(team discussed design/data together)
+
+could be one or more designers",commissioned designer,scientists,scientists,scientist,"author had idea and asked a designer to improve it
+
+technical person",author,,,,,CATEGORICAL,1,author characteristics,maker(type),,maker(type),maker(type),maker,type,,,FALSE
+,Instagram,"generates data graph and then drew on top of the graph
+
+drawing app on ipad",illustrator,photoshop,"data wrapper, flourish, illustrator (to finalize details for static viz), online digital tools (for map)",illustrator,illustrator with graphs generated somewhere else and brought to illustrator,"excel (nowadays, but looks a little old)","excel, digital tool",excel,illustrator (but maybe author came up with a graph somewhere else like R and then the designer put it together in illustrator),"tools, how made",,,,,CATEGORICAL,1,distribution channel,tool(type),,tool(type),tool(type),tool,type,,,FALSE
+P13,Instagram,5,3,2,1,4,1,1,1,1,1,"
+pure information",author has an intention (biased),1,5,DESIGNER,NUMERIC,1,ulterior subjective intent,maker(intent),,maker(intent),maker(intent),maker,intent,,,FALSE
+,Instagram,"anger against what she is highlighting
+
+dsibelief",curious,"don’t love the aesthetic, but curious","pleasant design despite sensitive stressing topic, does not make feel stressed, curious","curious, could be better design wise, would grab attention (shapes), soothing, not harsh","love the color palette, love the solutions (data points), happy to see","stupid, no idea what its about, would not grab attention unless in a context really interested in","nothing special, would probably pass","does not feel stupid, no feelings, very straightforward technical black and white","would be nicer to see in a report, in general doesn’t bother much but would improve the design if designing it, but would not be super annoyed, just slightly annoyed",feelings evoked,,,,,CATEGORICAL,1,personal engagement,self-artifact(effect(affect)),,self-artifact(effect(affect)),artifact(effect(affective)),artifact,effect,affective,T,TRUE
+P13,Instagram,5,4,4,3,5,3,1,1,1,2,scroll on,stop and look,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(encounter)),,self-artifact(behavior-intent(encounter)),artifact(behavior(encounter)),artifact,behavior,encounter,T,TRUE
+,Instagram,instagram/tiktok,instagram/tiktok,"Magazine/Editorial article
+","Magazine/Editorial article
+
+NYT",Editorial article/Website,"Magazine/Editorial article
+
+National Geographic for Kids",Scientific paper/ Technical instruction,Scientific paper/ Technical instruction,Scientific paper/ Technical instruction,Scientific publication/ Website,publication source,,,,,CATEGORICAL,1,distribution channel,"mode, artifact(type, genre)",,"mode, artifact(type, genre)",mode(type),mode,type,,,TRUE
+,Instagram,"graphic designer
+
+could have worked with data scientist who provided the data","graphic designer
+
+could have worked with data scientist who provided the data","graphic designer
+
+could have worked with data scientist who provided the data",data journalist,"graphic designer
+
+team of designers + analysts",data analyst,data analyst,data analyst,data analyst,data analyst,who made it,,,,,CATEGORICAL,1,author characteristics,maker(type),,maker(type),maker(type),maker,type,,,FALSE
+P14,Instagram,5,4,4,5,3,4,2,2,2,3,low visual communication skills,high visual communication skills,1,5,DESIGNER,NUMERIC,1,author skills,maker(skill(communication)),,maker(skill(communication)),maker(skill(communication)),maker,skill,communication,,FALSE
+,Instagram,"20s-30s
+(younger generation)",early millenial (40s),early millenial (40s),everyone,boomers (50s for icons),"teenager, younger",phd+ (academia) (25+),phd+ (academia) (25+),phd+ (academia) (25+),academia but with more digital literacy so younger than other science ones,audience age,,,,,CATEGORICAL,1,audience characteristics,audience(age),,audience(age),audience(age),audience,age,,,FALSE
+P14,Instagram,4,4,4,5,3,4,2,2,2,3,specific audience,general audience,1,5,DESIGNER,NUMERIC,1,audience characteristics,audience(type),,audience(type),audience(type),audience,type,,,FALSE
+P14,Instagram,5,3,5,5,2,4,3,2,3,5,hard to understand,easy to understand,1,5,DESIGNER,NUMERIC,1,personal understanding,artifact(comprehensibility),TODO,TODO,artifact(usability(effort)),artifact,usability,effort,T,TRUE
+P14,Instagram,5,5,5,4,1,1,1,1,1,1,scroll past,stop and look,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(encounter)),,self-artifact(behavior-intent(encounter)),artifact(behavior(encounter)),artifact,behavior,encounter,T,TRUE
+P14,Instagram,4,4,4,3,2,3,1,1,1,1,informative,narrative,1,5,DESIGNER,NUMERIC,1,ulterior subjective intent,artifact(intent(inform><narrative)),,artifact(intent(inform><narrative)),artifact(intent)),artifact,intent,,,TRUE
+P15,Instagram,5,4.5,5,3,5,4,1,1,4,1,context-dependent,stand-alone,1,5,RESEARCHER,NUMERIC,0,distribution channel,artifact(design(context-dependence)),artifact(genre(completeness)),artifact(genre(completeness)),artifact(genre(completeness)),artifact,genre,completeness,,FALSE
+,Instagram,SM (tumblr),"facebook
+
+newspaper if 80s",CNN (originally published and then reposted to social media e.g. facebook),"corn.com
+
+infographic","news website (e.g. CNN) with article
+
+not on SM alone
+
+infographic for 8th graders in literature class
+
+presentation","not made to education people on different penguins
+
+open source online textbook on how to code/use the software",academia (physics paper),academia (psych paper),"academia (psych paper 80s)
+
+SAT/ACT science reading comprehension",academia (last 10 years stats paper),purpose,,,,,CATEGORICAL,0,distribution channel,"mode, artifact(type, genre)",mode(type),mode(type),mode(type),mode,type,,,FALSE
+P15,Instagram,1,5,3,4.5,5,4.5,1,2,1,3,quick to make,long time to make,1,5,RESEARCHER,NUMERIC,1,author characteristics,artifact(design(creation time)),,artifact(design(creation time)),artifact(design(duration)),artifact,design,duration,,TRUE
+P15,Instagram,1,5,4,4,5,2,1,1,1,1,"likelihood of made by one person
+(3 means unsure)",probably made by multiple people,1,5,RESEARCHER,NUMERIC,1,author characteristics,maker(type(group size)),,maker(type(group size)),maker(type(group size)),maker,type,group size,,FALSE
+,Instagram,"job unclear, but pro-LGBT","commercial board, R&D, publications",political journalist (maybe DS background),department of agriculture,news journalist,CS textbook author,physics PI / prof,grad student,psych prof,stats grad student,author job role,,,,,CATEGORICAL,1,author characteristics,maker(vocation),,maker(vocation),maker(vocation),maker,vocation,,,FALSE
+,Instagram,MS Paint/ Adobe Illustrator,artist commission based on what the data person wanted,photo shop,"heatmap software
+(GIS or proprietry viz software)","Assembled in MS ppt
+
+airplane
+plot generated in R/python and built around
+
+combo of coding + illustration",python,R,R or python,S (what R was based on)/ C++/ prepackaged science toolbox/ random 80s software,python,tools used to make,,,,,CATEGORICAL,1,distribution channel,tool(type),,tool(type),tool(type),tool,type,,,FALSE
+P15,Instagram,1,3,4,3,4,5,4,4.5,4.5,5,author no stats background,stats phd,1,5,RESEARCHER,NUMERIC,1,author skills,maker(skill(statistics)),,maker(skill(statistics)),maker(skill(statistics)),maker,skill,statistics,,FALSE
+P15,Instagram,1,1,1.5,2,5,4.5,4.5,4.5,4.5,4.5,data serving story (story first),story serving data (data first/story ad hoc),1,5,RESEARCHER,NUMERIC,1,ulterior subjective intent,artifact(focus(data><story)),,artifact(focus(data><story)),artifact(intent),artifact,intent,,,TRUE
+P15,Instagram,4,4,4,2,4.5,4,2,2,2,3,hate (rip up),love (publish),1,5,RESEARCHER,NUMERIC,1,personal engagement,artifact(design(like)),,artifact(design(like)),artifact(design(like)),artifact,design,like,T,FALSE
+P15,Instagram,4.5,4,4.5,1.5,4,2,1,2,1,3.5,not clever,clever,1,5,RESEARCHER,NUMERIC,1,author skills,artifact(design(clever)),,artifact(design(clever)),artifact(design(clever)),artifact,design,clever,,FALSE
