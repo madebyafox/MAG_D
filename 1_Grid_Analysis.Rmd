@@ -131,6 +131,52 @@ g_master <- p4+p5+p8+p9+p10+p11+p12+p13+p14
 
 ## P04
 
+### WIP EXPLORE
+
+#### Conflicts 
+```{r}
+
+
+## TODO WTAF is measured as 'conflict'? see 
+# https://docs.openrepgrid.org/articles/web/measures-conflict.html
+#Bell, R. C. (2004). A new approach to measuring inconsistency or conflict in grids. Personal Construct Theory & Practice, 1, 53–59.
+#Heider, F. (1946). Attitudes and cognitive organization. Journal of Psychology, 21, 107–112.
+
+indexConflict3(p4)
+
+```
+
+#### Implicative Dilemmas
+```{r}
+#https://docs.openrepgrid.org/articles/web/measures-implicative.html
+
+# Implicative dilemmas are closely related to the notion of conflict. An implicative dilemma arises when a desired change on one construct is associated with an undesired implication on another construct. E. g. a timid subject may want to become more socially skilled but associates being socially skilled with different negative characteristics (selfish, insensitive etc.). Hence, he may anticipate that becoming less timid will also make him more selfish (cf. Winter, 1982). 
+
+indexDilemma(p4)
+## TODO really actually figure out 1. if this is useful and 2. what it is doing. 3. how to define the self (vs) ideal self and align poles
+
+```
+
+### PCA/biplots
+
+```{r biplot-p4}
+
+biplotSimple(p4)
+biplot2d(p4)
+biplotEsa2d(p4)
+biplotSlater2d(p4)
+biplotPseudo3d(p4)
+# biplot3d(p4)
+
+
+## TODO! Figure out relationship between biplots and PCA, and precisely what the biplots are depicting
+
+```
+
+```{r pca-p4}
+constructPca(p4) 
+```
+
 ### CONSTRUCT ANALYSIS
 
 ```{r describe-constructs-p4}
@@ -159,6 +205,9 @@ cluster(p4, along =1, #1=constructs, 2 = elements, 0 = both (default)
         cmethod="ward.D", #agglomeration method TODO evaluate diff options
         align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
         cex = 1, lab.cex = 1)
+
+## TODO! Figure out bootstrap clustering
+#https://docs.openrepgrid.org/reference/clusterBoot.html
 
 ```
 
@@ -210,7 +259,27 @@ bertinCluster(p4,
 
 # GROUP LEVEL
 
+## TODO RESEARCHERS
+## TODO DESIGNERS 
+
 ## ALL PARTICIPANTS
+
+### PCA/BIPLOTS
+
+
+```{r biplot-master}
+
+biplotSimple(g_master)
+biplot2d(g_master)
+biplotEsa2d(g_master)
+biplotSlater2d(g_master)
+biplotPseudo3d(g_master)
+# biplot3d(g_master)
+
+
+## TODO! Figure out relationship between biplots and PCA, and precisely what the biplots are depicting
+
+```
 
 ### CONSTRUCT ANALYSIS
 
@@ -257,11 +326,14 @@ elementCor(g_master)
 
 # calculate cluster analysis
 # https://docs.openrepgrid.org/articles/web/clustering.html
-cluster(g_master, along = 2, #1=constructs, 2 = elements, 0 = both (default)
+cluster(g_master, along = 1, #1=constructs, 2 = elements, 0 = both (default)
         dmethod =  "euclidean",#distance measure TODO evaluate diff options    
         cmethod="ward.D", #agglomeration method TODO evaluate diff options
         align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
         cex = 1, lab.cex = 1)
+
+
+distanceHartmann(g_master) 
 ```
 
 ```{r elements-bertin-master}
