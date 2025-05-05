@@ -1,0 +1,726 @@
+---
+title: "Visualization Attitudes via Repertory Grid"
+author: "Amy R Fox & Dana Hua"
+date: "2024-05-01"
+output:
+  html_document:
+    theme: cosmo
+    code_folding: hide
+    fig_caption: yes
+    number_sections: no
+    toc: yes
+    toc_float:
+      collapsed: yes
+      smooth_scroll: yes
+    toc_depth: 6
+  pdf_document:
+    toc: yes
+    toc_depth: '5'
+always_allow_html: yes
+font-family: DejaVu Sans
+mainfont: DejaVu Sans
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+
+# SETUP
+
+### Import Packages
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+#UTILITIES
+library(Hmisc) # %nin% operator
+library(psych) #describe() & efa
+library(tidyverse) #all the things
+library(magrittr) #special pipes like %<>%
+library(summarytools) #data quality
+library(lubridate) #dealing with dates
+
+
+#VIZ
+library(ggformula) #regression syntax viz
+library(ggstatsplot) #dummies
+library(gghalves) #half boxplots 
+library(GGally) #extends ggplot for EDA 
+library(corrplot) #sophisticated correlation plots
+library(ggeasy) #easy labelling
+library(ggh4x) #guides [dual axes]
+library(patchwork) #multi-plot layout
+library(ggdist) #raincloud plots and other distributionals
+library(viridis) #color palettes
+library(RColorBrewer) #color palettes
+library(plotly) # interactive graphs
+library(paletteer) #more palettes
+library(interactions) ##easier regression ixn plots.srlsy
+library(tidygraph)
+
+#ANALYSIS
+library(OpenRepGrid) #https://docs.openrepgrid.org/index.html
+
+#MODELLING
+# library(jtools) #Social Science regression utilities
+# library(easystats) #modelling helpers
+# library(see)
+# library(sjPlot)
+# library(lme4)
+# library(lmerTest) #for CIs in glmer
+# # library(mixed) ## utilities for glmers 
+# library(jmv) ## jamovi EFA
+
+
+#STATISTICAL TESTS 
+# library(kSamples) #AD K-SAMPLE TEST (for distribution comparison)
+# library(rstatix) #FRIEDMAN'S TESTS and effect sizes 
+
+#CONFIG
+options(readr.show_col_types = FALSE) #don't show coltypes on read_csv
+
+
+## IMPORTANT 
+# GRAPH_SAVE = TRUE #set to true to generate all the SD graphs and save to folders 
+# source("graphing_functions.R") #import graphing palettes and custom functions
+
+```
+### Import Data
+
+```{r import-data}
+
+#example grids from package
+# bell2010
+# mackay1992
+# fbb2003
+
+## IMPORT CLEAN PARTICIPANT-LEVEL GRIDS
+## load grid (continuous constructs only) for each participant 
+## #importExcel from OpenRepGrid package, creates S4 object 
+p4 <-  importExcel(file= "data/participant_grids/continuous/P04_clean.xlsx") # researcher
+p5 <-  importExcel(file= "data/participant_grids/continuous/P05_clean.xlsx") # researcher
+p6 <-  importExcel(file= "data/participant_grids/continuous/P06_clean.xlsx") # researcher
+p7 <-  importExcel(file= "data/participant_grids/continuous/P07_clean.xlsx") # researcher
+p15 <- importExcel(file= "data/participant_grids/continuous/P15_clean.xlsx") # researcher 
+
+
+p8 <-  importExcel(file= "data/participant_grids/continuous/P08_clean.xlsx") # designer
+p9 <-  importExcel(file= "data/participant_grids/continuous/P09_clean.xlsx") # designer
+p10 <- importExcel(file= "data/participant_grids/continuous/P10_clean.xlsx") # designer
+p11 <- importExcel(file= "data/participant_grids/continuous/P11_clean.xlsx") # designer
+p12 <- importExcel(file= "data/participant_grids/continuous/P12_clean.xlsx") # designer
+p13 <- importExcel(file= "data/participant_grids/continuous/P13_clean.xlsx") # designer
+p14 <- importExcel(file= "data/participant_grids/continuous/P14_clean.xlsx") # designer 
+
+
+## CREATE GROUP-LEVEL GRIDS
+g_designers <- p4 + p5 + p6 + p7 + p15
+g_designers <- p8 + p9 + p10 + p11 + p12 + p13 + p14
+
+## CREATE MASTER GRID
+g_all <- p4 + p5 + p6 + p7 + p15 + p8 + p9 + p10 + p11 + p12 + p13 + p14
+
+## IMPORT RAW CODED-DATA DATAFRAME
+## row = one participant construct (elements as cols)
+df_raw <- read_csv(file = "data/CODED_CONSTRUCTS.csv",  na=c("", "NA"))
+
+## MINIMAL CODED-DATA FRAME ONLY CONTINUOUS CONSTRUCTS
+df_coded <- df_raw %>% 
+  filter(CONSTRUCT_TYPE == "NUMERIC") %>% 
+  mutate(
+    PID = as.factor(PID),
+    SAMPLE = factor(SAMPLE),
+    CONSTRUCT_TYPE = factor(CONSTRUCT_TYPE),
+    POLE_LEFT  = factor(POLE_LEFT),
+    POLE_RIGHT = factor(POLE_RIGHT),
+    POLES = paste0(POLE_LEFT,"-",POLE_RIGHT),
+    FIRST = factor(FIRST),
+    SECOND = factor(SECOND),
+    THIRD = factor(THIRD),
+    CODE = factor(CODE_STANDARD),
+    RELFEXIVE = as.logical(REFLEXIVE),
+    MATCH = as.logical(MATCH)) %>% 
+  mutate(
+    across(CAREBEAR_BARS:BAYES_RIDGES, .fns = as.numeric)) %>% 
+  select(
+    -(CODE_DH:CODE_STANDARD)
+  )
+
+## alternative to custom building 
+# ## test coded-construct df
+# t15 <- OpenRepGrid::importExcel(file="data/participant_grids/continuous/P15_test.xlsx")
+
+
+## LONG DATAFRAME 
+## row = one participant construct X element
+df_codedElements <- df_coded %>%
+  pivot_longer(
+    cols = CAREBEAR_BARS:BAYES_RIDGES,
+    names_to ="ELEMENT") %>% 
+  mutate(
+    value=as.numeric(value),
+    ELEMENT = factor(ELEMENT)
+  )
+
+```
+
+
+
+
+
+#ANALYSIS
+
+## SCRATCH
+
+#### Construct Correlations (RAW)
+
+```{r construct-correlations}
+
+(c <- constructCor(p15, trim=50, index=FALSE))
+
+ggcorrplot(c, show.diag = TRUE, hc.order = FALSE, lab = TRUE, lab_size=0.2,
+    type = "lower")
+
+```
+
+
+#### Construct Clustering
+```{r construct-clustering-p4}
+
+# calculate cluster analysis
+# https://docs.openrepgrid.org/articles/web/clustering.html
+cluster(p15, along =1, #1=constructs, 2 = elements, 0 = both (default)
+        dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        cex = 1, lab.cex = 1,
+        trim=50)
+
+## TODO! Figure out bootstrap clustering
+#https://docs.openrepgrid.org/reference/clusterBoot.html
+
+
+cluster(t15, along =1, #1=constructs, 2 = elements, 0 = both (default)
+        dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        cex = 1, lab.cex = 1,
+        trim=50)
+```
+
+
+```{r construct-clustering-boostrap}
+## BOOSTRAP CLUSTERING FOR EACH PARTICIPANT 
+
+# p-values for construct dendrogram
+s <- clusterBoot(p15, along=1)
+x <- plot(s)
+
+```
+
+
+
+## PARTICIPANT LEVEL
+
+### CONSTRUCT ANALYSIS (RAW)
+
+#### Construct Description (RAW)
+
+```{r describe_constructs_raw}
+
+## For each participant, show the distribution of each construct for each element 
+## facet-grid : element (cols) participant (rows)
+## x = value
+## y = construct
+
+## work at rating level
+df <- df_codedElements
+
+## ridgeplot
+df %>% ggplot( aes(x = value, y = FIRST)) + 
+  ggridges::geom_density_ridges2(alpha=0.5) + 
+  facet_grid(. ~ ELEMENT)
+
+
+
+```
+
+
+```{r describe-constructs}
+
+statsConstructs(p15,trim=75)
+
+
+## ARF TODO reformat as df to get ridgeplot of histograms w/ constructs as rows
+```
+
+
+
+#### Visualize Construct Clustering
+```{r bertin-clustering-p4}
+
+# calculate cluster analysis
+# https://docs.openrepgrid.org/articles/web/clustering.html
+bertinCluster(p15, along =1, #1=constructs, 2 = elements, 0 = both (default)
+        dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        type = "rectangle",
+        cex = 1, lab.cex = 1,
+        trim=50)
+
+## TODO! Figure out bootstrap clustering
+#https://docs.openrepgrid.org/reference/clusterBoot.html
+
+
+bertinCluster(t15, along =1, #1=constructs, 2 = elements, 0 = both (default)
+        dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        type = "rectangle",
+        cex = 1, lab.cex = 1,
+        trim=50)
+```
+
+
+
+### ELEMENT ANALYSIS
+
+#### Describe Elements
+```{r describe-elements-p4}
+
+# calculate descriptive statistics 
+(descriptives <- statsElements(p15))
+descriptives$element <- rownames(descriptives) #add element name to df
+
+
+## ARF TODO reform as dfs to get ridgeplot of elements
+#visualize distributions
+# descriptives %>% ggplot(aes(x=))
+
+```
+
+#### Element Correlations
+```{r correlations-elements-p4}
+
+elementCor(p15)
+```
+
+
+
+#### Element Clustering
+```{r element-clustering-p4}
+
+# calculate cluster analysis
+# https://docs.openrepgrid.org/articles/web/clustering.html
+
+participants <- list(p4,p5,p6,p7)
+names =  c("p4","p5","p6","p7")
+
+i=0
+for (p in participants){
+title = names[i]
+cluster(p, along = 2, #1=constructs, 2 = elements, 0 = both (default)
+        dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        cex = 1, lab.cex = 1, main = title)  
+i=i+1
+}
+
+
+
+cluster(t15, along = 2, #1=constructs, 2 = elements, 0 = both (default)
+        dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        cex = 1, lab.cex = 1)
+
+```
+
+```{r elements-bertin-b4}
+
+bertinCluster(p4,
+              type="rectangle", draw.axis = FALSE)
+
+```
+
+
+
+
+
+## GROUP LEVEL
+
+## MASTER LEVEL
+
+
+
+### Construct SuperGrids 
+
+While a single (repertory) _Grid_ contains data for an individual participant, a _SuperGrid_ contains data for multiple participants. In the case of this study, the same elements were shown to all participants, and thus SuperGrids can be constructed via simple concatenation (i.e. rbind) of individual participant grids. 
+
+```{r supergrids}
+
+## DESIGNER SuperGrid
+
+
+
+## RESEARCHER SuperGrid
+
+
+## MASTER SuperGrid
+g_master <- p4+p5+p6+p7+p8+p9+p10+p11+p12+p13+p14+p15
+
+# is.repgrid(g_master) #verify is wff grid
+
+```
+
+
+
+
+# PARTICIPANT-LEVEL
+
+## P04
+
+### WIP EXPLORE
+
+#### Conflicts 
+```{r}
+
+
+## TODO WTAF is measured as 'conflict'? see 
+# https://docs.openrepgrid.org/articles/web/measures-conflict.html
+#Bell, R. C. (2004). A new approach to measuring inconsistency or conflict in grids. Personal Construct Theory & Practice, 1, 53–59.
+#Heider, F. (1946). Attitudes and cognitive organization. Journal of Psychology, 21, 107–112.
+
+indexConflict3(p4)
+
+```
+
+#### Implicative Dilemmas
+```{r}
+#https://docs.openrepgrid.org/articles/web/measures-implicative.html
+
+# Implicative dilemmas are closely related to the notion of conflict. An implicative dilemma arises when a desired change on one construct is associated with an undesired implication on another construct. E. g. a timid subject may want to become more socially skilled but associates being socially skilled with different negative characteristics (selfish, insensitive etc.). Hence, he may anticipate that becoming less timid will also make him more selfish (cf. Winter, 1982). 
+
+indexDilemma(p15, self=, ideal=10)
+## TODO really actually figure out 1. if this is useful and 2. what it is doing. 3. how to define the self (vs) ideal self and align poles
+
+
+p15
+```
+
+### PCA/biplots
+
+```{r biplot-p4}
+
+biplotSimple(p4)
+biplot2d(p4)
+biplotEsa2d(p4)
+biplotSlater2d(p4)
+biplotPseudo3d(p4)
+# biplot3d(p4)
+
+biplotSimple(p15)
+biplotSimple(t15)
+biplot2d(t15)
+biplotEsa2d(t15)
+biplotSlater2d(t15)
+biplotPseudo3d(t15)
+
+## TODO! Figure out relationship between biplots and PCA, and precisely what the biplots are depicting
+
+```
+
+```{r pca-p4}
+constructPca(p4) 
+```
+
+
+# WIP GROUP ANALYSIS
+
+## Create Custom Grid
+```{r}
+
+# CREATE a custom grid from the coded constructs dataframe
+
+######## FILTER MASTER DATAFRAME 
+d <- df %>% 
+  filter(
+      PID=="P15",
+      CONSTRUCT_TYPE=="NUMERIC"
+      ) %>% 
+  mutate_at(vars(CAREBEAR_BARS:BAYES_RIDGES), as.numeric) %>% 
+  mutate(
+    COUPLED = paste0(POLE_LEFT,"-",POLE_RIGHT),
+    CONSTRUCT = paste0(FIRST,"(",SECOND,")")
+  ) %>% select (
+    POLE_LEFT, POLE_RIGHT,
+    COUPLED,
+    CONSTRUCT,
+    CAREBEAR_BARS:BAYES_RIDGES)
+  # ) %>% column_to_rownames(var = "CONSTRUCT")
+  # ) %>% column_to_rownames(var = "CODE_STANDARD")
+########### 
+
+## elements
+e <- d %>% select(-(POLE_LEFT:CONSTRUCT)) %>% colnames()
+# e <- c("care-bear","diamond-lady","bullets","heatmap","taxes",
+       # "penguins","physics-matplotlib","interaction","slope-interaction","bayesian")
+## construct left pole
+l <- d %>% pull(POLE_LEFT)
+## construct right pole
+r <- d %>% pull(POLE_RIGHT)
+## construct code
+c <- d %>% pull(CONSTRUCT)
+
+## ratings
+## have to unravel dataframe by row; unlist goes by column, 
+## so instead, first transpose, then use 
+s <- c(t(d %>% select(CAREBEAR_BARS:BAYES_RIDGES)))
+
+## ASSEMBLE NEW REPGRID OBJECT
+## args 
+args <- list(
+  name = e,
+  l.name = c,
+  # r.name = r,
+  coupled =F,
+  scores = s
+  ) 
+t15 <- makeRepgrid(args)
+t15 <- setScale(t15, 1, 5)
+t15
+
+
+g_double <- t15+t15
+
+```
+
+### CONSTRUCT ANALYSIS (RAW)
+
+#### Construct Description (RAW)
+
+```{r describe-constructs-p4}
+
+statsConstructs(p15,trim=50)
+statsConstructs(t15,trim=50)
+
+## ARF TODO reformat as df to get ridgeplot of histograms w/ constructs as rows
+```
+
+
+
+
+#### Construct Correlations (RAW)
+
+```{r construct-correlations-p4}
+constructCor(p15)
+constructCor(t15)
+
+```
+
+
+#### Construct Clustering
+```{r construct-clustering-p4}
+
+# calculate cluster analysis
+# https://docs.openrepgrid.org/articles/web/clustering.html
+cluster(p15, along =1, #1=constructs, 2 = elements, 0 = both (default)
+        dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        cex = 1, lab.cex = 1,
+        trim=50)
+
+## TODO! Figure out bootstrap clustering
+#https://docs.openrepgrid.org/reference/clusterBoot.html
+
+
+cluster(t15, along =1, #1=constructs, 2 = elements, 0 = both (default)
+        dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        cex = 1, lab.cex = 1,
+        trim=50)
+```
+
+
+#### Visualize Construct Clustering
+```{r bertin-clustering-p4}
+
+# calculate cluster analysis
+# https://docs.openrepgrid.org/articles/web/clustering.html
+bertinCluster(p15, along =1, #1=constructs, 2 = elements, 0 = both (default)
+        dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        type = "rectangle",
+        cex = 1, lab.cex = 1,
+        trim=50)
+
+## TODO! Figure out bootstrap clustering
+#https://docs.openrepgrid.org/reference/clusterBoot.html
+
+
+bertinCluster(t15, along =1, #1=constructs, 2 = elements, 0 = both (default)
+        dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        type = "rectangle",
+        cex = 1, lab.cex = 1,
+        trim=50)
+```
+
+
+
+### ELEMENT ANALYSIS
+
+#### Describe Elements
+```{r describe-elements-p4}
+
+# calculate descriptive statistics 
+(descriptives <- statsElements(p15))
+descriptives$element <- rownames(descriptives) #add element name to df
+
+
+## ARF TODO reform as dfs to get ridgeplot of elements
+#visualize distributions
+# descriptives %>% ggplot(aes(x=))
+
+```
+
+#### Element Correlations
+```{r correlations-elements-p4}
+
+elementCor(p15)
+```
+
+
+
+#### Element Clustering
+```{r element-clustering-p4}
+
+# calculate cluster analysis
+# https://docs.openrepgrid.org/articles/web/clustering.html
+
+participants <- list(p4,p5,p6,p7)
+names =  c("p4","p5","p6","p7")
+
+i=0
+for (p in participants){
+title = names[i]
+cluster(p, along = 2, #1=constructs, 2 = elements, 0 = both (default)
+        dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        cex = 1, lab.cex = 1, main = title)  
+i=i+1
+}
+
+
+
+cluster(t15, along = 2, #1=constructs, 2 = elements, 0 = both (default)
+        dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        cex = 1, lab.cex = 1)
+
+```
+
+```{r elements-bertin-b4}
+
+bertinCluster(p4,
+              type="rectangle", draw.axis = FALSE)
+
+```
+
+
+
+# GROUP LEVEL
+
+## TODO RESEARCHERS
+## TODO DESIGNERS 
+
+## ALL PARTICIPANTS
+
+### PCA/BIPLOTS
+
+
+```{r biplot-master}
+
+biplotSimple(g_master)
+biplot2d(g_master)
+biplotEsa2d(g_master)
+biplotSlater2d(g_master)
+biplotPseudo3d(g_master)
+# biplot3d(g_master)
+
+
+## TODO! Figure out relationship between biplots and PCA, and precisely what the biplots are depicting
+
+```
+
+### CONSTRUCT ANALYSIS
+
+```{r describe-master-constructs}
+statsConstructs(g_master)
+
+## ARF TODO reformat as df to get ridgeplot of histograms w/ constructs as rows
+```
+
+
+
+
+#### Construct Correlations
+
+```{r master-construct-correlations}
+constructCor(g_master)
+```
+### ELEMENT ANALYSIS
+
+#### Describe Elements
+```{r describe-master-elements}
+
+# calculate descriptive statistics 
+(descriptives <- statsElements(g_master))
+descriptives$element <- rownames(descriptives) #add element name to df
+
+
+## ARF TODO reform as dfs to get ridgeplot of elements
+#visualize distributions
+# descriptives %>% ggplot(aes(x=))
+
+```
+
+#### Element Correlations
+```{r master-correlations-elements}
+
+elementCor(g_master)
+```
+
+
+
+#### Element Clustering
+```{r element-clustering-master}
+
+# calculate cluster analysis
+# https://docs.openrepgrid.org/articles/web/clustering.html
+cluster(g_master, along = 1, #1=constructs, 2 = elements, 0 = both (default)
+        dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        cex = 1, lab.cex = 1)
+
+
+distanceHartmann(g_master) 
+```
+
+```{r elements-bertin-master}
+
+bertinCluster(g_master,
+              type="rectangle", draw.axis = FALSE)
+
+```
+
+```
