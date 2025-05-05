@@ -58,7 +58,12 @@ library(paletteer) #more palettes
 library(interactions) ##easier regression ixn plots.srlsy
 library(tidygraph)
 
-#ANALYSIS
+#TABLES
+library(gt)
+library(qacBase)
+library(openxlsx)
+
+#REP GRID ANALYSIS
 library(OpenRepGrid) #https://docs.openrepgrid.org/index.html
 library(ggfortify) #autoplot for prcomp
 
@@ -130,7 +135,7 @@ stimuli <- c("CAREBEAR_BARS","LADY_LINE","BULLET_BARS","CARTOMAP","MAN_INFO","PE
 
 
 ## CREATE GROUP-LEVEL GRIDS
-g_designers <- p4 + p5 + p6 + p7 + p15
+g_researchers <- p4 + p5 + p6 + p7 + p15
 g_designers <- p8 + p9 + p10 + p11 + p12 + p13 + p14
 
 ## CREATE MASTER GRID
@@ -181,9 +186,9 @@ df_codedElements <- df_coded %>%
 
 
 
-#ANALYSIS
 
-## PARTICIPANT LEVEL
+
+# PARTICIPANT LEVEL
 
 ### Construct Clustering
 ```{r construct-clustering-dendrograms}
@@ -327,18 +332,126 @@ https://www.sthda.com/english/wiki/wiki.php?id_contents=7851#visualize-supplemen
 
 ```
 
-# !! TODO GROUP LEVEL
-```{r}
+# TODO GROUP LEVEL
+ 
+## COMPARE GROUPS — PCA
+
+```{r biplot-comparison}
+
+## PRINT PCA BIPLOT for each participant
+
+  print("RESEARCHERS")
+  biplot2d(g_researchers)
+  print("DESIGNERS")
+  biplot2d(g_designers)
+
+
+```
+
+# ALL PARTICIPANTS
+
+### Code Frequency table
+```{r code_table}
 
 
 
+## TABLE AT FIRST
+crosstab(data = df_codedElements, rowvar = FIRST, colvar = SAMPLE, type = "percent")   # or "prop.col", 
+
+
+## DATAFRAME
+df <- df_codedElements %>% 
+  select(FIRST,SECOND,THIRD,POLES,CODE_FULL,ELEMENT,SAMPLE,PID) 
+
+## TWO LEVEL TABLE 
+# one row per participant element X code
+table_df <- df %>%
+  count(FIRST, SECOND, SAMPLE) %>%
+  pivot_wider(names_from = SAMPLE, values_from = n, values_fill = 0) %>%
+  arrange(FIRST, SECOND) %>%
+  group_by(FIRST) %>%
+  mutate(FIRST = if_else(row_number() == 1, FIRST, ""),
+         DESIGNER=DESIGNER/10,
+         RESEARCHER=RESEARCHER/10
+         ) %>%
+  ungroup()
+table_df %>% gt()
+
+
+## THREE LEVEL TABLE
+table_df <- df %>%
+  count(FIRST, SECOND, THIRD, SAMPLE) %>%
+  pivot_wider(
+    names_from = SAMPLE,
+    values_from = n,
+    values_fill = 0
+  ) %>%
+  arrange(FIRST, SECOND, THIRD) %>%
+  group_by(FIRST, SECOND) %>%
+  mutate(
+    THIRD = as.character(THIRD),
+    SECOND = if_else(row_number() == 1, SECOND, ""),
+    FIRST = if_else(row_number() == 1, FIRST, ""),
+    DESIGNER=DESIGNER/10,
+    RESEARCHER=RESEARCHER/10
+  ) %>%
+  ungroup()
+table_df %>% gt()
+
+## CONSTRUCT  LEVEL TABLE
+table_df <- df %>%
+  group_by(FIRST, SECOND, THIRD, SAMPLE) %>%
+  summarise(POLES_values = paste(unique(POLES), collapse = ","), .groups = "drop") %>%
+  pivot_wider(
+    names_from = SAMPLE,
+    values_from = POLES_values,
+    values_fill = ""
+  ) %>%
+  arrange(FIRST, SECOND, THIRD) %>%
+  group_by(FIRST, SECOND) %>%
+  mutate(
+    THIRD = as.character(THIRD),
+    SECOND = if_else(row_number() == 1, SECOND, ""),
+    FIRST = if_else(row_number() == 1, FIRST, "")
+  ) %>%
+  ungroup()
+table_df %>% gt()
+
+
+
+
+
+
+###### CODE LEVEL TO XLS
+table_df <- df %>%
+  group_by(FIRST, SECOND, THIRD, SAMPLE) %>%
+  summarise(POLES_values = paste(unique(POLES), collapse = "\n"), .groups = "drop") %>%
+  pivot_wider(
+    names_from = SAMPLE,
+    values_from = POLES_values,
+    values_fill = ""
+  ) %>%
+  arrange(FIRST, SECOND, THIRD) %>%
+  group_by(FIRST, SECOND) %>%
+  mutate(
+    THIRD = as.character(THIRD),
+    SECOND = if_else(row_number() == 1, SECOND, ""),
+    FIRST = if_else(row_number() == 1, FIRST, "")
+  ) %>%
+  ungroup()
+# table_df
+# knitr::kable(table_df)
+# library(gt)
+# table_df %>% gt()
+
+write.xlsx(table_df, file = "table.xlsx", colNames=TRUE, asTable = TRUE)
 
 ```
 
 
 
 
-# !! WIP LMER
+## !! WIP LMER
 ```{r}
 
 # df <- df_codedElements %>% 
