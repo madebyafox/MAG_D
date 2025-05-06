@@ -200,6 +200,25 @@ write_csv(df_eda, file = "data/NUMERIC_CONSTRUCTS_WIDE.csv")
 
 # PARTICIPANT LEVEL
 
+
+#### Construct Correlations (RAW)
+
+```{r construct-correlations-example}
+
+constructCor(p4)
+elementCor(p4, method="pearson")
+
+
+(c <- constructCor(p4, trim=50, index=FALSE, method="pearson"))
+
+## todo amy fix plot
+ggcorrplot(c, show.diag = TRUE, hc.order = FALSE, lab = TRUE, lab_size=0.2,
+    type = "lower")
+
+```
+
+
+
 ## Construct Dendrograms
 ```{r construct-clustering-dendrograms}
 
@@ -264,6 +283,10 @@ bertinCluster(l, along =1, #1=constructs, 2 = elements, 0 = both (default)
 }
 
 
+## TODO WRITE SIMPLE BERTIN LOOP 
+bertin(p4)
+
+
 ```
 
 
@@ -318,6 +341,49 @@ for (l in list_all){
 ```
 
 # WIP GROUP LEVEL
+ 
+## COMPARE GROUPS - DENDROGRAM CONSTRUCTS
+
+```{r group_dendrogram}
+
+
+ cluster(g_researchers, along = 1, #1=constructs, 2 = elements, 0 = both (default)
+        trim=100,
+         dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        cex = 1, lab.cex = 1, main = title)  
+
+cluster(g_designers, along = 1, #1=constructs, 2 = elements, 0 = both (default)
+       trim=100,
+         dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        cex = 1, lab.cex = 1, main = title)
+
+```
+ 
+## COMPARE GROUPS - DENDROGRAM ELEMENTS
+
+```{r group_dendrogram}
+
+
+ cluster(g_researchers, along = 2, #1=constructs, 2 = elements, 0 = both (default)
+        trim=100,
+         dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        cex = 1, lab.cex = 1, main = "RESEARCHERS")  
+
+cluster(g_designers, along = 2, #1=constructs, 2 = elements, 0 = both (default)
+       trim=100,
+         dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        cex = 1, lab.cex = 1, main = "DESIGNERS")
+
+```
+ 
  
 ## COMPARE GROUPS — PCA/BIPLOTS
 
@@ -379,7 +445,7 @@ for (l in list_all){
            
            
            ## size and margins 
-           mai = c(0.2,1.5,.2,1.5),
+           mai = c(0.2,1.5,.2,1.5), #margins 
            unity=TRUE, #just makes it neater
            scale.e = 0.75, 
           
