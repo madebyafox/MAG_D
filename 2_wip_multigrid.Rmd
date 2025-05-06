@@ -1,0 +1,70 @@
+---
+title: "Untitled"
+output: html_document
+date: "2025-05-06"
+---
+
+
+
+```{r reprex_example_gridtitles}
+
+#load library
+library(OpenRepGrid)
+
+#load an example grid
+participant_grid <- fbb2003 + fbb2003
+
+#Create dendogram for constructs with participant name
+## prints title 
+cluster(participant_grid, along=1, main="Participant Name")
+
+
+#Create bertin diagram for constructs/elements w/ participant name
+## does not print title 
+bertinCluster(participant_grid, main= "Participant Name")
+
+#Create PCA biplot w/ participant name 
+##does not print title 
+OpenRepGrid::biplot2d(participant_grid, main = "Participant Name — 2D Biplot")
+
+```
+
+
+```{r wip clustering multigrids}
+
+## grids w/ same constructs, same ratings 
+## constructs treated as unique rather than the same 
+a <- bindConstructs(fbb2003, fbb2003)
+cluster(a, along=1, align=FALSE)
+## ^duplicates constructs
+
+
+## grids w/ same constructs but different ratings 
+a <- fbb2003
+b <- permuteGrid(a,along=1)
+supergrid <- bindConstructs(a,b)
+
+## clustering w/ alignment shows how constructs treated as unique; some are reversed 
+cluster(supergrid, along=1)
+
+## clustering w/o alignment shows how constructs treated as unique; 
+## despite the differing ratings, the structure is reflected??
+cluster(supergrid, along=1, align=FALSE)
+
+
+## NEXT STEP:: figure out what hclust() does (that's the underlying function)
+## and how hclust() handles observation data 
+
+## NEXT STEP :: see Bell (zotero)
+##https://www.tandfonline.com/doi/epdf/10.1080/10720530050130111?needAccess=true
+## and fransella book (hardcopy) on multiple grids 
+
+## NEXT STEP (lmer) :: email Mark Heckmann 
+## see some example of how his lmer software was used 
+## see if there are citations to the paper that demonstrate the model
+## if not email him to ask about model structure 
+
+## NEXT STEP :: explore EXPLORATORY FACTOR ANALYSIS on the coded data
+
+```
+
