@@ -180,6 +180,16 @@ df_codedElements <- df_coded %>%
     ELEMENT = factor(ELEMENT, levels=stimuli)
   )
 
+
+## CREATE DF FOR EFA 
+## need constructs as columns 
+df_eda <- df_codedElements |> 
+  pivot_wider(
+    names_from=CODE,
+    values_from=value
+  )
+write_csv(df_eda, file = "data/NUMERIC_CONSTRUCTS_WIDE.csv")
+
 ```
 
 
@@ -252,6 +262,9 @@ for (l in list_all){
 
 
 ```
+
+
+
 
 
 

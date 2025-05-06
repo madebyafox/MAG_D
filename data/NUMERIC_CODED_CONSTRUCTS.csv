@@ -1,0 +1,139 @@
+PID,PLATFORM,CAREBEAR_BARS,LADY_LINE,BULLET_BARS,CARTOMAP,MAN_INFO,PENGUIN_DISTS,HISTO_DIST,IXN_EBARS,IXN_SLOPE,BAYES_RIDGES,POLE_LEFT,POLE_RIGHT,POLE_PREFERRED,LEFT_SCALE,RIGHT_SCALE,SAMPLE,CONSTRUCT_TYPE,MATCH,CODE_DH,CODE_AF,CODE_NEGOTIATED,CODE_FINAL,CODE_STANDARD,FIRST,SECOND,THIRD,REFLEXIVE,STANDARDIZED
+P10,Instagram,1,1,1,1,4,2,3,5,2,5,easier to understand,harder to understand,,1,5,DESIGNER,NUMERIC,1,personal understanding,artifact(comprehensibility),TODO,TODO,artifact(usability(effort)),artifact,usability,effort,T,TRUE
+P10,Instagram,5,5,5,5,5,4,1,2,1,2,scroll past,stop and look,,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(encounter)),,self-artifact(behavior-intent(encounter)),artifact(behavior(encounter)),artifact,behavior,encounter,T,TRUE
+P10,Instagram,2,2,3,5,1,5,1,1,1,1,less likely to save,more likely to save,,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(save)),,self-artifact(behavior-intent(save)),artifact(behavior(save)),artifact,behavior,save,T,TRUE
+P10,Instagram,4,1,2,5,5,3,2,1,3,1,less likely to read contextual information,more likely to read,,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(engage further)),,self-artifact(behavior-intent(engage further)),artifact(behavior(infoseek)),artifact,behavior,infoseek,T,TRUE
+P10,Instagram,3,5,5,5,5,3,1,1,1,1,more likely to like/react,more likely to like/react,,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(like/upvote)),,self-artifact(behavior-intent(like/upvote)),artifact(behavior(like/upvote)),artifact,behavior,like/upvote,T,TRUE
+P10,Instagram,3,4,4,5,3,3.5,1,2.5,2.5,2,author less data communication (design) skills,author more data communication (design) skills,,1,5,DESIGNER,NUMERIC,1,author skills,maker(skill(design)),,maker(skill(design)),maker(skill(design)),maker,skill,design,,FALSE
+P10,Instagram,2,3,4,4,4,5,5,4,4,5,author less data analysis skills,author more data analysis skills,,1,5,DESIGNER,NUMERIC,1,author skills,maker(skill(data)),,maker(skill(data)),maker(skill(data)),maker,skill,data,,FALSE
+P11,Reddit,1,1.2,3.2,3,2,1.8,5,4.8,5,4.5,"publication source (people online)
+",publication source (scholarly),,1,5,DESIGNER,NUMERIC,1,distribution channel,mode(type),,mode(type),mode(type),mode,type,,,FALSE
+P11,Reddit,3,5,4,5,5,5,5,5,5,5,not legible (no idea what it’s writing),legible (I can read it!),,1,5,DESIGNER,NUMERIC,1,personal understanding,artifact(legibility),TODO,TODO,artifact(usability(legibility)),artifact,usability,legibility,T,TRUE
+P11,Reddit,4.5,5,4.5,5,4,4,2,1.5,2,2,not readable (no idea about the message),readable (I can understand it!),,1,5,DESIGNER,NUMERIC,1,personal understanding,artifact(comprehensibility),TODO,TODO,artifact(usability(readability)),artifact,usability,readability,T,TRUE
+P11,Reddit,2,4,4,5,4,5,5,4,5,5,Not showcasing the data,Showcasing the data,,1,5,DESIGNER,NUMERIC,0,ulterior subjective intent,artifact(focus(data)),artifact(intent(data)),artifact(intent(data)),artifact(intent(data)),artifact,intent,data,,FALSE
+P11,Reddit,5,5,4,4,5,3.5,2,2,2.5,2,Not tell a story with data,Tell a story with data (call for action),,1,5,DESIGNER,NUMERIC,0,ulterior subjective intent,artifact(focus(story)),artifact(intent(narrative)),artifact(intent(narrative)),artifact(intent(narrative)),artifact,intent,narrative,,FALSE
+P11,Reddit,5,4,3,2,2.5,2,1,1,2,1.5,will not share,Share it with someone,,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(sharing)),,self-artifact(behavior-intent(sharing)),artifact(behavior(sharing)),artifact,behavior,sharing,T,TRUE
+P11,Reddit,3,3,2,1,1,1,1,1,1.5,1,will not comment,Leave a comment,,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(commenting)),,self-artifact(behavior-intent(commenting)),artifact(behavior(commenting)),artifact,behavior,commenting,T,TRUE
+P11,Reddit,5,5,5,4,3,3,1,1,1.5,1.5,will not upvote,will upvote,,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(like/upvote)),,self-artifact(behavior-intent(like/upvote)),artifact(behavior(like/upvote)),artifact,behavior,like/upvote,T,TRUE
+P11,Reddit,5,4,4,2,3,3,1,1,1.5,1.5,keep scrolling,"stop and look
+",,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(encounter)),,self-artifact(behavior-intent(encounter)),artifact(behavior(encounter)),artifact,behavior,encounter,T,TRUE
+P11,Reddit,4.8,3.5,4.5,4,4,4.5,3,3,3,3,Poorly communicated,Communicated,,1,5,DESIGNER,NUMERIC,0,author skills,artifact(efficacy),maker(skill(communication)),maker(skill(communication)),maker(skill(communication)),maker,skill,communication,,FALSE
+P11,Reddit,4,4.3,3.5,3.8,3.2,4,2,2,2.5,2.8,Design quality - bad,Design quality - Good,,1,5,DESIGNER,NUMERIC,1,author skills,"artifact, maker(design(quality), skill(design))",,"artifact, maker(design(quality), skill(design))",maker(skill(design)),maker,skill,design,,TRUE
+P11,Reddit,3,3,4,4.3,4.2,4,5,5,5,5,Untrustworthy,Trustworthy,,1,5,DESIGNER,NUMERIC,1,trustworthiness,artifact(trust),,artifact(trust),artifact(trust),artifact,trust,,,FALSE
+P12,Linkedin,1,1,1.5,2,3,3,5,5,5,5,audience low stats skills,audience high stats skills,,1,5,DESIGNER,NUMERIC,1,audience characteristics,audience(skill(statistics)),,audience(skill(statistics)),audience(skill(statistics)),audience,skill,statistics,,FALSE
+P12,Linkedin,5,5,5,3,3,3,1,1,1,3,more illustrative focus,more data chart type focus,,1,5,DESIGNER,NUMERIC,0,chart design,artifact(focus(data><story)),artifact(intent),artifact(intent),artifact(intent),artifact,intent,,,FALSE
+P12,Linkedin,2,2,3,4,5,4,2,2,2,3,lower design quality,higher design quality,,1,5,DESIGNER,NUMERIC,1,author skills,artifact(design(quality)),artifact(design(quality),artifact(design(quality),artifact(design(quality),artifact,design,quality,,FALSE
+P12,Linkedin,3,4,2,4,3,5,5,5,1,5,misleading,unbiased,,1,5,DESIGNER,NUMERIC,1,ulterior subjective intent,artifact(bias),,artifact(bias),artifact(trust),artifact,trust,,,TRUE
+P12,Linkedin,2,3,3,5,5,5,4,4,1,5,not much thought put into chart type,thought put into chart type,,1,5,DESIGNER,NUMERIC,1,author characteristics,maker(dilligence(design)),,maker(dilligence(design)),maker(dilligence(design)),maker,dilligence,design,,FALSE
+P12,Linkedin,5,5,5,5,5,4,2,2,5,4,not much thought put into storytelling,thought put into storytelling,,1,5,DESIGNER,NUMERIC,1,ulterior subjective intent,maker(dilligence(storytelling)),,maker(dilligence(storytelling)),maker(dilligence(storytelling)),maker,dilligence,storytelling,,FALSE
+P12,Linkedin,1,1,3,3,3,4,5,5,4,5,author low stats skills,"author high stats skills
+",,1,5,DESIGNER,NUMERIC,1,author characteristics,maker(skill(statistics)),,maker(skill(statistics)),maker(skill(statistics)),maker,skill,statistics,,FALSE
+P12,Linkedin,1,1,3,3,5,3,3,2,5,3,scroll on,pause,,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(encounter)),,self-artifact(behavior-intent(encounter)),artifact(behavior(encounter)),artifact,behavior,encounter,T,TRUE
+P12,Linkedin,1,1,2,5,1,5,1,5,2,5,color as decorative or nonexistent,color as a visual encoding,,1,5,DESIGNER,NUMERIC,1,chart design,artifact(encoding(color(purpose))),artifact(design(encoding)),artifact(design(encoding)),artifact(design(encoding)),artifact,design,encoding,,FALSE
+P13,Instagram,4,4,5,3,4,3,1,1,1,1,less time spent designing (labor),more time spent designing (labor),,1,5,DESIGNER,NUMERIC,1,author characteristics,maker(process(time)),,maker(process(time)),maker(dilligence),maker,dilligence,,,TRUE
+P13,Instagram,5,5,3,3,5,3,1,2,2,3,less thought put into designing,more thought put into designing,,1,5,DESIGNER,NUMERIC,1,author characteristics,maker(dilligence(design)),,maker(dilligence(design)),maker(dilligence(design)),maker,dilligence,design,,FALSE
+P13,Instagram,5,5,5,4,4,3,5,3,5,2,less successful at conveying message,more successful at conveying message,,1,5,DESIGNER,NUMERIC,0,author skills,artifact(efficacy),maker(skill(communication)),maker(skill(communication)),maker(skill(communication)),maker,skill,communication,,FALSE
+P13,Instagram,5,4,4,1,5,1,1,1,1,1,explanatory,call for action (want to change behavior),,1,5,DESIGNER,NUMERIC,1,ulterior subjective intent,artifact(intent(inform><action)),,artifact(intent(inform><action)),artifact(intent)),artifact,intent,,,TRUE
+P13,Instagram,5,3,2,1,4,1,1,1,1,1,"
+pure information",author has an intention (biased),,1,5,DESIGNER,NUMERIC,1,ulterior subjective intent,maker(intent),,maker(intent),maker(intent),maker,intent,,,FALSE
+P13,Instagram,5,4,4,3,5,3,1,1,1,2,scroll on,stop and look,,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(encounter)),,self-artifact(behavior-intent(encounter)),artifact(behavior(encounter)),artifact,behavior,encounter,T,TRUE
+P14,Instagram,5,4,4,5,3,4,2,2,2,3,low visual communication skills,high visual communication skills,,1,5,DESIGNER,NUMERIC,1,author skills,maker(skill(communication)),,maker(skill(communication)),maker(skill(communication)),maker,skill,communication,,FALSE
+P14,Instagram,4,4,4,5,3,4,2,2,2,3,specific audience,general audience,,1,5,DESIGNER,NUMERIC,1,audience characteristics,audience(type),,audience(type),audience(type),audience,type,,,FALSE
+P14,Instagram,5,3,5,5,2,4,3,2,3,5,hard to understand,easy to understand,,1,5,DESIGNER,NUMERIC,1,personal understanding,artifact(comprehensibility),TODO,TODO,artifact(usability(effort)),artifact,usability,effort,T,TRUE
+P14,Instagram,5,5,5,4,1,1,1,1,1,1,scroll past,stop and look,,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(encounter)),,self-artifact(behavior-intent(encounter)),artifact(behavior(encounter)),artifact,behavior,encounter,T,TRUE
+P14,Instagram,4,4,4,3,2,3,1,1,1,1,informative,narrative,,1,5,DESIGNER,NUMERIC,1,ulterior subjective intent,artifact(intent(inform><narrative)),,artifact(intent(inform><narrative)),artifact(intent)),artifact,intent,,,TRUE
+P15,Instagram,5,4.5,5,3,5,4,1,1,4,1,context-dependent,stand-alone,,1,5,RESEARCHER,NUMERIC,0,distribution channel,artifact(design(context-dependence)),artifact(genre(completeness)),artifact(genre(completeness)),artifact(genre(completeness)),artifact,genre,completeness,,FALSE
+P15,Instagram,1,5,3,4.5,5,4.5,1,2,1,3,quick to make,long time to make,,1,5,RESEARCHER,NUMERIC,1,author characteristics,artifact(design(creation time)),,artifact(design(creation time)),artifact(design(duration)),artifact,design,duration,,TRUE
+P15,Instagram,1,5,4,4,5,2,1,1,1,1,made by individual,made by group,,1,5,RESEARCHER,NUMERIC,1,author characteristics,maker(type(group size)),,maker(type(group size)),maker(type(group size)),maker,type,group size,,FALSE
+P15,Instagram,1,3,4,3,4,5,4,4.5,4.5,5,author no stats background,stats phd,,1,5,RESEARCHER,NUMERIC,1,author skills,maker(skill(statistics)),,maker(skill(statistics)),maker(skill(statistics)),maker,skill,statistics,,FALSE
+P15,Instagram,1,1,1.5,2,5,4.5,4.5,4.5,4.5,4.5,data serving story (story first),story serving data (data first/story ad hoc),,1,5,RESEARCHER,NUMERIC,1,ulterior subjective intent,artifact(focus(data><story)),,artifact(focus(data><story)),artifact(intent),artifact,intent,,,TRUE
+P15,Instagram,4,4,4,2,4.5,4,2,2,2,3,hate (rip up),love (publish),,1,5,RESEARCHER,NUMERIC,1,personal engagement,artifact(design(like)),,artifact(design(like)),artifact(design(like)),artifact,design,like,T,FALSE
+P15,Instagram,4.5,4,4.5,1.5,4,2,1,2,1,3.5,not clever,clever,,1,5,RESEARCHER,NUMERIC,1,author skills,artifact(design(clever)),,artifact(design(clever)),artifact(design(clever)),artifact,design,clever,,FALSE
+P4,Instagram,5,4,4,2,2,1,1,1,1,1,not biased,biased,,1,5,RESEARCHER,NUMERIC,1,trustworthiness,artifact(bias),,artifact(bias),artifact(trust),artifact,trust,,,TRUE
+P4,Instagram,5,5,5,3,4,3,1,1,1,2,dry,sensational,,1,5,RESEARCHER,NUMERIC,1,chart design,artifact(aesthetics(vibe)),,artifact(aesthetics(vibe)),artifact(design(vibe)),artifact,design,vibe,,TRUE
+P4,Instagram,5,5,5,5,3,5,5,3,3,5,don't trust the data,trust the data,,1,5,RESEARCHER,NUMERIC,1,trustworthiness,data(trust),,data(trust),data(trust),data,trust,,,FALSE
+P4,Instagram,1,1,5,2,2,5,5,5,5,5,don't believe the author's message,believe author's message,,1,5,RESEARCHER,NUMERIC,0,trustworthiness,self-artifact(efficacy),author(trust),author(trust),maker(trust),maker,trust,,,TRUE
+P4,Instagram,1,1,1,4,3,4,5,4,4,5,audience education level (low),high edu level,,1,5,RESEARCHER,NUMERIC,1,audience characteristics,audience(education(level)),audience(skill(general)),audience(skill(general)),audience(skill),audience,skill,,,TRUE
+P4,Instagram,1,1,1,4,2,4,1,1,1,2,stop,scroll,,1,5,RESEARCHER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(encounter)),,self-artifact(behavior-intent(encounter)),artifact(behavior(encounter)),artifact,behavior,encounter,T,TRUE
+P5,Reddit/X,2,4.5,3,5,3,2.5,1.5,1.5,1.5,1.5,not professional designers,professional designers,,1,5,RESEARCHER,NUMERIC,0,author skills,maker(vocation),author(skill(design)),author(skill(design)),maker(skill(design)),maker,skill,design,,TRUE
+P5,Reddit/X,1,4.5,2,5,1,5,1,2.5,2.5,3.5,no skin in the game (no thought put into making the design of the viz),skin in the game (more thought put into making the design),,1,5,RESEARCHER,NUMERIC,1,author characteristics,maker(dilligence),,maker(dilligence),maker(dilligence),maker,dilligence,,,FALSE
+P5,Reddit/X,5,3,2,2,1,1,1,1,1,1,informative,persuasive,,1,5,RESEARCHER,NUMERIC,1,ulterior subjective intent,maker(intent),,maker(intent),maker(intent),maker,intent,,,FALSE
+P5,Reddit/X,1,5,5,5,5,5,5,5,5,5,don't trust the data,trust the data,,1,5,RESEARCHER,NUMERIC,1,trustworthiness,data(trust),,data(trust),data(trust),data,trust,,,FALSE
+P5,Reddit/X,1,5,3,5,3,5,5,5,5,5,don't turst the author,trust the author,,1,5,RESEARCHER,NUMERIC,1,trustworthiness,maker(trust),,maker(trust),maker(trust),maker,trust,,,FALSE
+P5,Reddit/X,5,5,5,5,2,5,4,5,4,4.5,low author competancy,high author competancy,,1,5,RESEARCHER,NUMERIC,1,author skills,maker(skill),,maker(skill),maker(skill),maker,skill,,,FALSE
+P5,Reddit/X,1,4,3,4,3,5,5,5,4,5,general audience,niche audience,,1,5,RESEARCHER,NUMERIC,1,audience characteristics,audience(type),,audience(type),audience(type),audience,type,,,FALSE
+P5,Reddit/X,1,3.5,3,4.5,3,4,5,4,4,5,less educated audience,more educated audience,,1,5,RESEARCHER,NUMERIC,1,audience characteristics,audience(education(level)),audience(skill(general)),audience(skill(general)),audience(skill),audience,skill,,,TRUE
+P5,Reddit/X,1.5,4,2,5,1,3.5,1,1,1,1,ignore,stop and look,,1,5,RESEARCHER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(encounter)),,self-artifact(behavior-intent(encounter)),artifact(behavior(encounter)),artifact,behavior,encounter,T,TRUE
+P6,Instagram,1,1,2,3,3,5,4,4,4,5,viewer no training in data visualization,viewer training in data visualization,,1,5,RESEARCHER,NUMERIC,0,audience characteristics,audience(skill(visualization)),audience(skill(data-literacy)),audience(skill(data-literacy)),audience(skill(dataliteracy)),audience,skill,dataliteracy,,TRUE
+P6,Instagram,5,5,4,3,3,4,3,5,4,5,target audience would not want to look,target audience want to look at it,,1,5,RESEARCHER,NUMERIC,0,audience characteristics,artifact(salience),audience(behavior-intent(encounter)),audience(behavior-intent(encounter)),audience(behavior(encounter)),audience,behavior,encounter,,TRUE
+P6,Instagram,3,2,2,4,3,5,2,4,4,5,participant would not want to look,participant would want to look,,1,5,RESEARCHER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(encounter)),,self-artifact(behavior-intent(encounter)),artifact(behavior(encounter)),artifact,behavior,encounter,T,TRUE
+P6,Instagram,2,5,3,3,4,4,1,3,2,4,author has less design skills,more design skills,,1,5,RESEARCHER,NUMERIC,0,author skills,maker(skill(design)),maker(skill(design)),maker(skill(design)),maker(skill(design)),maker,skill,design,,FALSE
+P6,Instagram,1,1,1,3,2,5,3,4,4,5,author has less statistics skills,more statistics skills,,1,5,RESEARCHER,NUMERIC,1,author skills,maker(skill(statistics)),,maker(skill(statistics)),maker(skill(statistics)),maker,skill,statistics,,FALSE
+P6,Instagram,4,5,3,2,3,3,2,3,4,4,author not effective in conveying message,author effective in conveying message,,1,5,RESEARCHER,NUMERIC,0,author skills,artifact(efficacy),maker(skill(communication),maker(skill(communication),maker(skill(communication),maker,skill,communication,,FALSE
+P7,Twitter/X,1,3,4,4,2,5,5,5,5,5,informal,formal,,1,5,RESEARCHER,NUMERIC,0,chart design,artifact(aesthetics(vibe)),artifact(register),artifact(register),artifact(register),artifact,register,,,FALSE
+P7,Twitter/X,5,5,5,5,3,3,1,2,2,2,does not care about design,care about design,,1,5,RESEARCHER,NUMERIC,1,author characteristics,maker(dilligence(design)),,maker(dilligence(design)),maker(dilligence(design)),maker,dilligence,design,,FALSE
+P7,Twitter/X,1,2,4,4,1,5,5,5,5,5,does not care about data,care about data,,1,5,RESEARCHER,NUMERIC,1,author characteristics,maker(dilligence(data)),,maker(dilligence(data)),maker(dilligence(data)),maker,dilligence,data,,FALSE
+P7,Twitter/X,3,5,5,5,2,5,1,2,1,2,author's design skills (low),(high),,1,5,RESEARCHER,NUMERIC,1,author skills,maker(skill(design)),,maker(skill(design)),maker(skill(design)),maker,skill,design,,FALSE
+P7,Twitter/X,4,5,5,5,5,4,1,2,2,3,author did not try,author tried,,1,5,RESEARCHER,NUMERIC,1,author characteristics,maker(dilligence),,maker(dilligence),maker(dilligence),maker,dilligence,,,FALSE
+P7,Twitter/X,2,1,1,1,3,1,3,2,1,3,would not want to change based on context,would want to change,,1,5,RESEARCHER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(re-design)),,self-artifact(behavior-intent(re-design)),artifact(behavior(redesign)),artifact,behavior,redesign,T,TRUE
+P7,Twitter/X,5,3,1,1,3,1,4,4,4,4,topic not interesting,topic interesting,,1,5,RESEARCHER,NUMERIC,1,personal engagement,self-data(topic(interest)),,self-data(topic(interest)),data(topic(interest)),data,topic,interest,T,TRUE
+P7,Twitter/X,4,5,5,5,2,4,1,1,1,1,visualization design not interesting,visualization design interesting,,1,5,RESEARCHER,NUMERIC,1,personal engagement,artifact(salience),,artifact(salience),artifact(design(salience)),artifact,design,salience,T,TRUE
+P7,Twitter/X,3,3,4,4,2,3,1,1,1,3,how long to look at chart (in seconds),,,1,5,RESEARCHER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(look-time)),self-artifact(behavior-intent(encounter)),self-artifact(behavior-intent(encounter)),artifact(behavior(encounter)),artifact,behavior,encounter,T,TRUE
+P8,Instagram,5,1,5,5,4,2,3,2,4,2,not clear overall (hard to understand),clear overall (easy to understand),,1,5,DESIGNER,NUMERIC,1,personal understanding,artifact(comprehensibility),TODO,TODO,artifact(usability(clarity)),artifact,usability,clarity,T,TRUE
+P8,Instagram,3,1,3,5,3,5,1,1,4,4,very ugly (personal preference),very nice,,1,5,DESIGNER,NUMERIC,1,personal engagement,artifact(aesthetics(appeal)),,artifact(aesthetics(appeal)),artifact(design(appeal)),artifact,design,appeal,T,TRUE
+P8,Instagram,2,1,2,4,3,5,3,5,4,5,author low data-analysis skills,high data-analysis skills,,1,5,DESIGNER,NUMERIC,1,author skills,maker(skill(data)),,maker(skill(data)),maker(skill(data)),maker,skill,data,,FALSE
+P8,Instagram,4,1,4,5,4,5,2,2,3,5,author low data-viz skills,high data-viz skills,,1,5,DESIGNER,NUMERIC,1,author skills,maker(skill(visualization)),,maker(skill(visualization)),maker(skill(visualization)),maker,skill,visualization,,FALSE
+P8,Instagram,5,5,4,5,4,2,1,1,3,3,author low communication skills,author high communication skills,,1,5,DESIGNER,NUMERIC,1,author skills,maker(skill(communication)),,maker(skill(communication)),maker(skill(communication)),maker,skill,communication,,FALSE
+P8,Instagram,5,5,5,4,4,3,1,1,1,2,low engagement (scroll past),high engagement (stop and look),,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(encounter)),,self-artifact(behavior-intent(encounter)),artifact(behavior(encounter)),artifact,behavior,encounter,T,TRUE
+P8,Instagram,3,2,4,3,4,3,5,1,5,2,low accessibility to visually impaired readers,high accessibility to visually impaired readers,,1,5,DESIGNER,NUMERIC,1,author skills,artifact(accessibility),,artifact(accessibility),artifact(usability(accessibility)),artifact,usability,accessibility,,TRUE
+P8,Instagram,5,5,5,4,4,3,1,1,1,1,Niche audience,General audience,,1,5,DESIGNER,NUMERIC,1,audience characteristics,audience(type),,audience(type),audience(type),audience,type,,,FALSE
+P8,Instagram,1,1,1,2,2,4,5,5,3,5,Audience low data literacy,Audience high data literacy,,1,5,DESIGNER,NUMERIC,0,audience characteristics,audience(skill(data-literacy)),audience(skill(data-literacy)),audience(skill(data-literacy)),audience(skill(dataliteracy)),audience,skill,dataliteracy,,TRUE
+P8,Instagram,3,2,1,4,1,2,1,5,5,1,More informative,More call-to-action,,1,5,DESIGNER,NUMERIC,1,ulterior subjective intent,maker(intent),,maker(intent),maker(intent),maker,intent,,,FALSE
+P8,Instagram,4,1,1,3,2,2,5,5,5,5,Data collector and data designer are different people,Data collector and data designer are the same person,,1,5,DESIGNER,NUMERIC,1,author skills,data(source(type)),,data(source(type)),data(source)),data,source,,,TRUE
+P8,Instagram,4,1,1,5,4,5,3,3,3,5,bad data representation,good data representation,,1,5,DESIGNER,NUMERIC,0,trustworthiness,artifact(design(appropriateness)),artifact(design(data-appropriateness)),artifact(design(data-appropriateness)),artifact(design(appropriateness)),artifact,design,appropriateness,,TRUE
+P8,Instagram,3,1,2,5,4,4,4,4,4,5,not trustworthy,trustworthy,,1,5,DESIGNER,NUMERIC,1,trustworthiness,artifact(trust),,artifact(trust),artifact(trust),artifact,trust,,,FALSE
+P9,Instagram/Linkedin,3,4,5,5,5,4,2,3,2,3,would not spend time looking at,would spend time looking at,,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(encounter)),,self-artifact(behavior-intent(encounter)),artifact(behavior(encounter)),artifact,behavior,encounter,T,TRUE
+P9,Instagram/Linkedin,4,4,5,5,5,4,2,2,2,2,niche audience,general audience,,1,5,DESIGNER,NUMERIC,1,audience characteristics,audience(type),,audience(type),audience(type),audience,type,,,FALSE
+P9,Instagram/Linkedin,4,5,5,4,5,4,2,2,1,2,designer has less  design skills,designer has more design skills,,1,5,DESIGNER,NUMERIC,1,author skills,maker(skill(design)),,maker(skill(design)),maker(skill(design)),maker,skill,design,,FALSE
+P9,Instagram/Linkedin,2,3,5,3,1,1,1,2,2,1,would not read contextual information,would read more contextual information,,1,5,DESIGNER,NUMERIC,1,personal engagement,self-artifact(behavior-intent(engage further)),,self-artifact(behavior-intent(engage further)),artifact(behavior(infoseek)),artifact,behavior,infoseek,T,TRUE
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
