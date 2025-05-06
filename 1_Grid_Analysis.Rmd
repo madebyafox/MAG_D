@@ -200,7 +200,7 @@ write_csv(df_eda, file = "data/NUMERIC_CONSTRUCTS_WIDE.csv")
 
 # PARTICIPANT LEVEL
 
-### Construct Clustering
+## Construct Dendrograms
 ```{r construct-clustering-dendrograms}
 
 ## PRINT CLUSTER FOR EACH PARTICIPANT
@@ -219,7 +219,7 @@ for (l in list_all){
 }
 ```
 
-### Element Clustering
+## Element Dendrograms
 ```{r element-clustering-dendrograms}
 
 ## PRINT CLUSTER FOR EACH PARTICIPANT
@@ -240,23 +240,26 @@ for (l in list_all){
 
 
 
-### Visualize Combined Clustering
+## Bertin Cluster Plots
 ```{r clustering-bertin}
 
 ## PRINT BERTIN CLUSTER MAP  FOR EACH PARTICIPANT
-i=1
+ i=1
 for (l in list_all){
-  title = names[i]
-  print(title)
+ 
+title = names[i]
 
   # https://docs.openrepgrid.org/articles/web/visualization-bertin.html
-  bertinCluster(l, along =0, #1=constructs, 2 = elements, 0 = both (default)
-        dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+bertinCluster(l, along =1, #1=constructs, 2 = elements, 0 = both (default)
+        dmethod =  "euclidean",#distance measure TODO evaluate diff options
         cmethod="ward.D", #agglomeration method TODO evaluate diff options
         align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
         type = "rectangle",
         cex = 1, lab.cex = 1,
-        trim=50, draw.axis = FALSE)
+        trim=50, draw.axis = TRUE)
+  op <- par(fig = c(0,1,0.1,1), mai=c(0,0,0.2,0), cex.main=0.85, adj=0, new = TRUE)
+  title(title)
+
   i=i+1
 }
 
@@ -268,7 +271,7 @@ for (l in list_all){
 
 
 
-### PCA BIPLOTS
+## PCA BIPLOTS
 
 ```{r biplot}
 
@@ -276,19 +279,120 @@ for (l in list_all){
 i=1
 for (l in list_all){
   title = names[i]
-  print(title)
   
   # https://docs.openrepgrid.org/articles/web/visualization-biplot.html
-  # biplotSimple(p15) 
-  biplot2d(l)
-  # biplotEsa2d(p15)
-  # biplotSlater2d(p15)
-  # biplotPseudo3d(p15)  
+  
+  biplot2d(l, 
+           dim = c(2,1),
+           zoom = 1,
+      
+           ## construct s
+           c.lines = TRUE,
+           col.c.lines= gray(0.9),
+           c.label.cex = 0.5,
+           c.labels.inside = FALSE,
+           c.label.col = "blue",
+           
+           ## elements
+           # rect.margins = c(2,2),
+           e.point.col = "red",
+           e.label.col = "red",
+           e.label.cex = 0.5, #element label size
+           
+           
+           ## size and margins 
+           mai = c(0.2,1.5,.2,1.5),
+           unity=TRUE, #just makes it neater
+           scale.e = 0.75, 
+          
+           )
+  op <- par(# fig = c(0,1,0.5,1), 
+           cex.main = 0.75, #title size
+           new = TRUE)
+  title(title)
   i=i+1
 }
 
+  
+  
 ```
 
+# WIP GROUP LEVEL
+ 
+## COMPARE GROUPS — PCA/BIPLOTS
+
+```{r biplot-comparison}
+
+
+  ## RESEARCHER BIPLOT
+  title = "RESEARCHERS"
+  print(title)
+  biplot2d(g_researchers,
+           dim = c(2,1),
+           zoom = 1,
+      
+           ## construct s
+           c.lines = TRUE,
+           col.c.lines= gray(0.9),
+           c.label.cex = 0.5,
+           c.labels.inside = FALSE,
+           c.label.col = "blue",
+           
+           ## elements
+           # rect.margins = c(2,2),
+           e.point.col = "red",
+           e.label.col = "red",
+           e.label.cex = 0.5, #element label size
+           
+           
+           ## size and margins 
+           mai = c(0.2,1.5,.2,1.5),
+           unity=TRUE, #just makes it neater
+           scale.e = 0.75, 
+          
+           )
+  op <- par(# fig = c(0,1,0.5,1), 
+           cex.main = 0.75, #title size
+           new = TRUE)
+  title(title)
+  
+  
+  ## DESIGNER BIPLOT
+  title = "DESIGNERS"
+  print(title)
+  biplot2d(g_designers,
+           dim = c(2,1),
+           zoom = 1,
+      
+           ## construct s
+           c.lines = TRUE,
+           col.c.lines= gray(0.9),
+           c.label.cex = 0.5,
+           c.labels.inside = FALSE,
+           c.label.col = "blue",
+           
+           ## elements
+           # rect.margins = c(2,2),
+           e.point.col = "red",
+           e.label.col = "red",
+           e.label.cex = 0.5, #element label size
+           
+           
+           ## size and margins 
+           mai = c(0.2,1.5,.2,1.5),
+           unity=TRUE, #just makes it neater
+           scale.e = 0.75, 
+          
+           )
+  op <- par(# fig = c(0,1,0.5,1), 
+           cex.main = 0.75, #title size
+           new = TRUE)
+  title(title)
+
+
+```
+
+# ARF WIP
 
 ### WIP PCA — CONSTRUCTS 
 ```{r pca}
@@ -345,21 +449,6 @@ https://www.sthda.com/english/wiki/wiki.php?id_contents=7851#visualize-supplemen
 
 ```
 
-# TODO GROUP LEVEL
- 
-## COMPARE GROUPS — PCA
-
-```{r biplot-comparison}
-
-## PRINT PCA BIPLOT for each participant
-
-  print("RESEARCHERS")
-  biplot2d(g_researchers)
-  print("DESIGNERS")
-  biplot2d(g_designers)
-
-
-```
 
 # ALL PARTICIPANTS
 
