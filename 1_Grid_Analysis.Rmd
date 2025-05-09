@@ -657,6 +657,9 @@ indexConflict3(p4)
 ```
 
 ## Implicative Dilema
+
+
+DECIDED to only ever consider this at the individual level b/c whether the same construct is valenced, and toward what pole can meaningfully differ between participants thus complicating / negating any group-level analysis. 
 ```{r}
 #https://docs.openrepgrid.org/articles/web/measures-implicative.html
 
