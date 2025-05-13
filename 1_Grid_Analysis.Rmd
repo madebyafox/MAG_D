@@ -56,6 +56,7 @@ library(plotly) # interactive graphs
 library(paletteer) #more palettes
 library(interactions) ##easier regression ixn plots.srlsy
 library(tidygraph)
+library(ggcorrplot) ##ggplot compliant correlation heatmaps
 
 #TABLES
 library(gt)
@@ -198,31 +199,83 @@ write_csv(df_eda, file = "data/NUMERIC_CONSTRUCTS_WIDE.csv")
 
 # PARTICIPANT LEVEL
 
+
 #### Construct Correlations (RAW)
 
-```{r construct-correlations-example}
+```{r construct-correlations, message=FALSE}
 
-constructCor(p4)
-elementCor(p4, method="pearson")
-
-
-(c <- constructCor(p4, trim=50, index=FALSE, method="pearson"))
-
-## todo amy fix plot
-ggcorrplot(c, show.diag = TRUE, hc.order = FALSE, lab = TRUE, lab_size=0.2,
-    type = "lower")
-
-```
-
-## Construct Dendrograms
-
-```{r construct-clustering-dendrograms-dana}
+## LOOP all participants and render correlation heatmap on constructs
+type = "correlation_heatmaps/"
+topic = "construct"
+level = "participant/"
 
 i <- 1
 for (l in list_all) {
   title <- names[i]
   
-  cluster(l, along = 1,
+  #get correlations
+  c <- constructCor(l, trim=50, index=FALSE, method="pearson")
+
+  #render heatmap
+  g <- ggcorrplot(c, show.diag = TRUE, show.legend = FALSE, type = "lower",
+                  hc.order = FALSE, #hc.ordered using hclust
+                  lab = TRUE, lab_size=2.5,
+                  tl.cex = 10, tl.srt = 15
+    ) + labs(title=paste0(title, " Construct Correlations"))
+  print(g)
+  
+  #save plot
+  ggsave(g, filename = paste0("plots/",level, type, topic, "_", title,".png"))
+  i <- i + 1
+}
+
+#cleanup
+rm(g,c)
+```
+#### Element Correlations (RAW)
+
+```{r element-correlations, message=FALSE}
+
+## LOOP all participants and render correlation heatmap on elements
+type = "correlation_heatmaps/"
+topic = "element"
+level = "participant/"
+
+i <- 1
+for (l in list_all) {
+  title <- names[i]
+  
+  #get correlations
+  c <- elementCor(l, trim=50, index=FALSE, method="pearson")
+
+  #render heatmap
+  g <- ggcorrplot(c, show.diag = TRUE, show.legend = FALSE, type = "lower",
+                  hc.order = FALSE, #hc.ordered using hclust
+                  lab = TRUE, lab_size=2.5,
+                  tl.cex = 10, tl.srt = 25
+  ) + labs(title=paste0(title, " Element Correlations"))
+  print(g)
+  
+  #save plot
+  ggsave(g, filename = paste0("plots/",level, type, topic, "_", title,".png"))
+  i <- i + 1
+}
+
+#cleanup
+rm(g,c)
+```
+## Construct Dendrograms
+
+
+```{r construct-clustering-dendrograms-dana}
+
+# type = "clustering_dendograms/"
+
+i <- 1
+for (l in list_all) {
+  title <- names[i]
+  
+  (c <- cluster(l, along = 1,
           dmethod = "euclidean",
           cmethod = "ward.D",
           align = TRUE,
@@ -230,8 +283,10 @@ for (l in list_all) {
           lab.cex = 0.8,           # Label size
           main = title,
           mar = c(2, 1, 2, 25),
-          trim=NA)
+          trim=NA))
   
+  #save plot
+  # ggsave(c, filename = paste0("plots/",type,title,".png"))  
   i <- i + 1
 }
 
@@ -446,7 +501,7 @@ for (l in list_all){
 
 ## COMPARE GROUPS - DENDROGRAM CONSTRUCTS
 
-```{r group_dendrogram}
+```{r group_dendrogram_constructs}
 
 
  cluster(g_researchers, along = 1, #1=constructs, 2 = elements, 0 = both (default)
@@ -467,7 +522,7 @@ cluster(g_designers, along = 1, #1=constructs, 2 = elements, 0 = both (default)
 
 ## COMPARE GROUPS - DENDROGRAM ELEMENTS
 
-```{r group_dendrogram}
+```{r group_dendrogram_elements}
 
 
  cluster(g_researchers, along = 2, #1=constructs, 2 = elements, 0 = both (default)
@@ -844,13 +899,7 @@ statsConstructs(p15,trim=50)
 ## ARF TODO reformat as df to get ridgeplot of histograms w/ constructs as rows?
 ```
 
-#### Construct Correlations (RAW)
 
-```{r construct-correlations-example}
-constructCor(p15)
-
-
-```
 
 #### Describe Elements
 
