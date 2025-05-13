@@ -24,7 +24,6 @@ editor_options:
     wrap: 72
 ---
 
-
 # SETUP
 
 ### Import Packages
@@ -93,6 +92,7 @@ options(readr.show_col_types = FALSE) #don't show coltypes on read_csv
 ```
 
 ### Import Data
+
 ```{r import-data}
 
 #example grids from package
@@ -103,20 +103,23 @@ options(readr.show_col_types = FALSE) #don't show coltypes on read_csv
 ## IMPORT CLEAN PARTICIPANT-LEVEL GRIDS
 ## load grid (continuous constructs only) for each participant 
 ## #importExcel from OpenRepGrid package, creates S4 object 
-p4 <-  importExcel(file= "data/participant_grids/simple/P04_clean.xlsx") # researcher
-p5 <-  importExcel(file= "data/participant_grids/simple/P05_clean.xlsx") # researcher
-p6 <-  importExcel(file= "data/participant_grids/simple/P06_clean.xlsx") # researcher
-p7 <-  importExcel(file= "data/participant_grids/simple/P07_clean.xlsx") # researcher
-p15 <- importExcel(file= "data/participant_grids/simple/P15_clean.xlsx") # researcher 
+
+gridType = "short" # use "simple" or "short" where short has even shorter construct names
+
+p4 <-  importExcel(file= paste0("data/participant_grids/", gridType,"/P04_clean.xlsx")) # researcher
+p5 <-  importExcel(file= paste0("data/participant_grids/", gridType,"/P05_clean.xlsx")) # researcher
+p6 <-  importExcel(file= paste0("data/participant_grids/", gridType,"/P06_clean.xlsx")) # researcher
+p7 <-  importExcel(file= paste0("data/participant_grids/", gridType,"/P07_clean.xlsx")) # researcher
+p15 <- importExcel(file= paste0("data/participant_grids/", gridType,"/P15_clean.xlsx")) # researcher 
 
 
-p8 <-  importExcel(file= "data/participant_grids/simple/P08_clean.xlsx") # designer
-p9 <-  importExcel(file= "data/participant_grids/simple/P09_clean.xlsx") # designer
-p10 <- importExcel(file= "data/participant_grids/simple/P10_clean.xlsx") # designer
-p11 <- importExcel(file= "data/participant_grids/simple/P11_clean.xlsx") # designer
-p12 <- importExcel(file= "data/participant_grids/simple/P12_clean.xlsx") # designer
-p13 <- importExcel(file= "data/participant_grids/simple/P13_clean.xlsx") # designer
-p14 <- importExcel(file= "data/participant_grids/simple/P14_clean.xlsx") # designer 
+p8 <-  importExcel(file= paste0("data/participant_grids/", gridType,"/P08_clean.xlsx")) # designer
+p9 <-  importExcel(file= paste0("data/participant_grids/", gridType,"/P09_clean.xlsx")) # designer
+p10 <- importExcel(file= paste0("data/participant_grids/", gridType,"/P10_clean.xlsx")) # designer
+p11 <- importExcel(file= paste0("data/participant_grids/", gridType,"/P11_clean.xlsx")) # designer
+p12 <- importExcel(file= paste0("data/participant_grids/", gridType,"/P12_clean.xlsx")) # designer
+p13 <- importExcel(file= paste0("data/participant_grids/", gridType,"/P13_clean.xlsx")) # designer
+p14 <- importExcel(file= paste0("data/participant_grids/", gridType,"/P14_clean.xlsx")) # designer 
 
 ## IMPORT RAW CODED-DATA DATAFRAME
 ## row = one participant construct (elements as cols)
@@ -125,6 +128,7 @@ df_raw <- read_csv(file = "data/CODED_CONSTRUCTS.csv",  na=c("", "NA"))
 ```
 
 ### Wrangle Data
+
 ```{r wrangle}
 
 
@@ -192,14 +196,7 @@ write_csv(df_eda, file = "data/NUMERIC_CONSTRUCTS_WIDE.csv")
 
 ```
 
-
-
-
-
-
-
 # PARTICIPANT LEVEL
-
 
 #### Construct Correlations (RAW)
 
@@ -217,28 +214,31 @@ ggcorrplot(c, show.diag = TRUE, hc.order = FALSE, lab = TRUE, lab_size=0.2,
 
 ```
 
-
-
 ## Construct Dendrograms
-```{r construct-clustering-dendrograms}
 
-## PRINT CLUSTER FOR EACH PARTICIPANT
-i=1
-for (l in list_all){
-  title = names[i]
+```{r construct-clustering-dendrograms-dana}
 
-  # # calculate cluster analysis
-  # # https://docs.openrepgrid.org/articles/web/clustering.html
-  cluster(l, along = 1, #1=constructs, 2 = elements, 0 = both (default)
-        dmethod =  "euclidean",#distance measure TODO evaluate diff options    
-        cmethod="ward.D", #agglomeration method TODO evaluate diff options
-        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
-        cex = 1, lab.cex = 1, main = title)  
-  i=i+1
+i <- 1
+for (l in list_all) {
+  title <- names[i]
+  
+  cluster(l, along = 1,
+          dmethod = "euclidean",
+          cmethod = "ward.D",
+          align = TRUE,
+          cex = 0,               # Overall plot text size
+          lab.cex = 0.8,           # Label size
+          main = title,
+          mar = c(2, 1, 2, 25),
+          trim=NA)
+  
+  i <- i + 1
 }
+
 ```
 
 ## Element Dendrograms
+
 ```{r element-clustering-dendrograms}
 
 ## PRINT CLUSTER FOR EACH PARTICIPANT
@@ -257,42 +257,144 @@ for (l in list_all){
 }
 ```
 
-
-
 ## Bertin Cluster Plots
-```{r clustering-bertin}
+```{r clustering-bertin-dendograms}
 
 ## PRINT BERTIN CLUSTER MAP  FOR EACH PARTICIPANT
- i=1
+i=1
 for (l in list_all){
  
-title = names[i]
-
+  title = names[i]
+  
   # https://docs.openrepgrid.org/articles/web/visualization-bertin.html
-bertinCluster(l, along =1, #1=constructs, 2 = elements, 0 = both (default)
-        dmethod =  "euclidean",#distance measure TODO evaluate diff options
-        cmethod="ward.D", #agglomeration method TODO evaluate diff options
-        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
-        type = "rectangle",
-        cex = 1, lab.cex = 1,
-        trim=50, draw.axis = TRUE)
+  bertinCluster(l, along =0, #1=constructs, 2 = elements, 0 = both (default)
+          dmethod =  "euclidean",#distance measure TODO evaluate diff options
+          cmethod="ward.D", #agglomeration method TODO evaluate diff options
+          align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+          type = "rectangle",
+          cex = 1, lab.cex = 1,
+          trim=50, draw.axis = FALSE,
+          main=title,
+          colors = c("white", "darkred"))
+          #id=c(FALSE, FALSE))
+    
   op <- par(fig = c(0,1,0.1,1), mai=c(0,0,0.2,0), cex.main=0.85, adj=0, new = TRUE)
   title(title)
-
   i=i+1
 }
+```
 
+```{r clustering-bertin-dendo-dana, fig.height=7.5, fig.width=8.5}
+i <- 1
+for (l in list_all) {
+  title_text <- names[i]
 
-## TODO WRITE SIMPLE BERTIN LOOP 
-bertin(p4)
+  # Create square plotting device (if saving or in interactive session)
+  #par(fig = c(0.1,1,0.1,1), mai = c(0, 0, 0.9, 0.5), new = FALSE)  # more top and right margin
+  par(fig = c(0, 1, 0, 1), mai = c(1.2, 4.3, 1.5, 2.5), new = FALSE)
+  plot.new()
+  #asp <- 1  # aspect ratio
+
+  # Adjust layout segments: make bertin display area square inside full plot
+  bertinCluster(
+    l,
+    along = 0,
+    dmethod = "euclidean",
+    cmethod = "ward.D",
+    align = TRUE,
+    type = "rectangle",
+    cex = 1,
+    lab.cex = 1,
+    trim = 50,
+    draw.axis = FALSE,
+    main = NULL,  # suppress internal title
+    colors = c("white", "darkred"),
+    lheight=0.75,
+    id = c(TRUE, FALSE),
+    #xsegs = c(0.0, 0.15, 0.8, 0.91, 1),  # wider center region
+    #ysegs = c(0.0, 0.15, 0.8, 1.0)       # to match horizontal size
+    xsegs = c(0.0, 0.17, 0.77, 0.91, 1),  # allow a little wider middle block
+    ysegs = c(0.0, 0.14, 0.8, 1.0)        # more space to the matrix vertically
+  )
+
+  # Overlay title in top-left
+  #par(fig = c(0, 1, 0.95, 1), mai = c(0, 0, 0, 0), new = TRUE)
+  par(fig = c(0, 1, 0.92, 1), mai = c(0, 0, 0, 0), new = TRUE)
+  plot.new()
+  title(main = title_text, adj = 0.2, line=-1, cex.main = 0.85)
+
+  i <- i + 1
+}
 
 
 ```
 
+```{r cluserting-bertin, fig.width=8}
+## TODO WRITE SIMPLE BERTIN LOOP 
+i=1
+for (l in list_all){
+   par(fig = c(0,1,0,1), mai = c(0.2, 0.1, 0.1, 0.2), new = FALSE)  # more top and right margin
+  plot.new()
+ 
+title = names[i]
+clustered_elements <- cluster(l,
+                    along = 2, #1=constructs, 2 = elements, 0 = both (default)
+                    dmethod =  "euclidean",#distance measure TODO evaluate diff options
+                    cmethod="ward.D", #agglomeration method TODO evaluate diff option
+                    cex = 1, lab.cex = 1, main = paste0(title, " - ", "Elements")
+                    )
 
+clustered_constructs <- cluster(l,
+                    along = 1, #1=constructs, 2 = elements, 0 = both (default)
+                    dmethod =  "euclidean",#distance measure TODO evaluate diff options
+                    cmethod="ward.D", #agglomeration method TODO evaluate diff option
+                    cex = 1, lab.cex = 1, main = paste0(title, " - ", "Constructs")
+                    )
 
+clustered <- cluster(l,
+                    along = 0, #1=constructs, 2 = elements, 0 = both (default)
+                    dmethod =  "euclidean",#distance measure TODO evaluate diff options
+                    cmethod="ward.D", #agglomeration method TODO evaluate diff option
+                    cex = 1, lab.cex = 1, main = paste0(title, " - ", "Both")
+                    )
 
+  # https://docs.openrepgrid.org/articles/web/visualization-bertin.html
+#bertin(clustered,
+        #trim=50, draw.axis = TRUE,
+        #colors = c("white", "darkred"))
+  
+#op <- par(fig = c(0,1,0.1,1), mai=c(0,0,0.2,0), cex.main=0.85, adj=0, new = TRUE)
+  #title(title)
 
+  # Create square plotting device (if saving or in interactive session)
+  #par(fig = c(0.1,1,0.1,1), mai = c(0, 0, 0.2, 0), new = TRUE)  # more top and right margin
+  #par(fig = c(0, 1, 0, 1), mai = c(1.2, 4.2, 1.5, 2.5), new = FALSE)
+  #plot.new()
+  #asp <- 1  # aspect ratio
+
+  # Adjust layout segments: make bertin display area square inside full plot
+  bertin(
+    clustered,
+    along = 0,
+    dmethod = "euclidean",
+    cmethod = "ward.D",
+    align = TRUE,
+    trim = 50,
+    main = paste0(title),  # suppress internal title
+    colors = c("white", "darkred"),
+    lheight=0.8,
+    id = c(TRUE, FALSE)
+  )
+
+  # Overlay title in top-left
+  #par(fig = c(0, 1, 0.95, 1), mai = c(0, 0, 0, 0), new = TRUE)
+  par(fig = c(0, 1, 0.92, 1), mai = c(0, 0, 0, 0), new = TRUE)
+  plot.new()
+  title(main = title, adj = 0.05, line=-1, cex.main = 0.85)
+
+  i<-i+1
+}
+```
 
 ## PCA BIPLOTS
 
@@ -341,7 +443,7 @@ for (l in list_all){
 ```
 
 # WIP GROUP LEVEL
- 
+
 ## COMPARE GROUPS - DENDROGRAM CONSTRUCTS
 
 ```{r group_dendrogram}
@@ -362,7 +464,7 @@ cluster(g_designers, along = 1, #1=constructs, 2 = elements, 0 = both (default)
         cex = 1, lab.cex = 1, main = title)
 
 ```
- 
+
 ## COMPARE GROUPS - DENDROGRAM ELEMENTS
 
 ```{r group_dendrogram}
@@ -383,8 +485,7 @@ cluster(g_designers, along = 2, #1=constructs, 2 = elements, 0 = both (default)
         cex = 1, lab.cex = 1, main = "DESIGNERS")
 
 ```
- 
- 
+
 ## COMPARE GROUPS — PCA/BIPLOTS
 
 ```{r biplot-comparison}
@@ -460,7 +561,8 @@ cluster(g_designers, along = 2, #1=constructs, 2 = elements, 0 = both (default)
 
 # ARF WIP
 
-### WIP PCA — CONSTRUCTS 
+### WIP PCA — CONSTRUCTS
+
 ```{r pca}
 
 
@@ -504,21 +606,22 @@ plot(pca, type="lines")
 ```
 
 ### WIP AMY
-more work here to explore clustering methods avail in 
-https://www.datanovia.com/en/blog/cluster-analysis-in-r-simplified-and-enhanced/
-https://www.sthda.com/english/wiki/wiki.php?id_contents=7851#visualize-supplementary-quantitative-variables
 
+more work here to explore clustering methods avail in
+<https://www.datanovia.com/en/blog/cluster-analysis-in-r-simplified-and-enhanced/>
+<https://www.sthda.com/english/wiki/wiki.php?id_contents=7851#visualize-supplementary-quantitative-variables>
 
 ### WIP PCA ELEMENTS
+
 ```{r}
 
 
 ```
 
-
 # ALL PARTICIPANTS
 
 ### Code Frequency table
+
 ```{r code_table}
 
 
@@ -616,10 +719,8 @@ write.xlsx(table_df, file = "table.xlsx", colNames=TRUE, asTable = TRUE)
 
 ```
 
-
-
-
 ## !! WIP LMER
+
 ```{r}
 
 # df <- df_codedElements %>% 
@@ -639,12 +740,10 @@ write.xlsx(table_df, file = "table.xlsx", colNames=TRUE, asTable = TRUE)
 
 ```
 
-
-
-
 # FUTURE AMY TODO
 
-## Conflicts 
+## Conflicts
+
 ```{r}
 
 ## TODO WTAF is measured as 'conflict'? see 
@@ -658,8 +757,11 @@ indexConflict3(p4)
 
 ## Implicative Dilema
 
+DECIDED to only ever consider this at the individual level b/c whether
+the same construct is valenced, and toward what pole can meaningfully
+differ between participants thus complicating / negating any group-level
+analysis.
 
-DECIDED to only ever consider this at the individual level b/c whether the same construct is valenced, and toward what pole can meaningfully differ between participants thus complicating / negating any group-level analysis. 
 ```{r}
 #https://docs.openrepgrid.org/articles/web/measures-implicative.html
 
@@ -672,12 +774,10 @@ plot(i)
 
 ```
 
+# SCRATCH
 
-
-
-
-# SCRATCH 
 ## Create Grid from dataframe
+
 ```{r}
 
 # # CREATE a custom grid from the coded constructs dataframe
@@ -735,8 +835,6 @@ plot(i)
 
 ```
 
-
-
 #### Construct Description (RAW)
 
 ```{r describe-constructs-example}
@@ -746,9 +844,6 @@ statsConstructs(p15,trim=50)
 ## ARF TODO reformat as df to get ridgeplot of histograms w/ constructs as rows?
 ```
 
-
-
-
 #### Construct Correlations (RAW)
 
 ```{r construct-correlations-example}
@@ -757,11 +852,8 @@ constructCor(p15)
 
 ```
 
-
-
-
-
 #### Describe Elements
+
 ```{r describe-elements-example}
 
 # calculate descriptive statistics 
@@ -770,9 +862,7 @@ statsElements(p15)
 ```
 
 #### Element Correlations
+
 ```{r correlations-elements-example}
 elementCor(p15)
 ```
-
-
-
