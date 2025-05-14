@@ -59,6 +59,7 @@ library(interactions) ##easier regression ixn plots.srlsy
 library(tidygraph)
 library(ggcorrplot) ##ggplot compliant correlation heatmaps
 library(webshot2) ##saving plots that aren't ggplot
+library(dendextend) ##dendrogram extras 
 
 
 #TABLES
@@ -618,49 +619,216 @@ for (l in list_all){
 
 # WIP GROUP LEVEL
 
-## COMPARE GROUPS - DENDROGRAM CONSTRUCTS
+## DENDROGRAM CONSTRUCTS by GROUP
 
-```{r group_dendrogram_constructs}
+### Researchers
+```{r group_dendrogram_constructs_researchers, fig.height=12, fig.width=20, message=FALSE, warning=FALSE}
+
+## PRINT PCA BIPLOT for each participant
+
+type = "cluster_dendrograms/"
+topic = "construct_"
+level = "group/"
 
 
+##### PRINT PLOTS TO FILE 
+ png(filename=paste0("plots/",level,type,topic,"RESEARCHERS_dendrogram",".png"),width=15, height = 12, units = "in", res = 300)
  cluster(g_researchers, along = 1, #1=constructs, 2 = elements, 0 = both (default)
-        trim=100,
+        trim=200,
          dmethod =  "euclidean",#distance measure TODO evaluate diff options    
         cmethod="ward.D", #agglomeration method TODO evaluate diff options
         align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
-        cex = 1, lab.cex = 1, main = title)  
-
-cluster(g_designers, along = 1, #1=constructs, 2 = elements, 0 = both (default)
-       trim=100,
+        cex = 1, lab.cex = 1, main = "RESEARCHERS")
+ dev.off()
+ 
+##### PRINT PLOTS TO SCREEN 
+ 
+ cluster(g_researchers, along = 1, #1=constructs, 2 = elements, 0 = both (default)
+        trim=200,
          dmethod =  "euclidean",#distance measure TODO evaluate diff options    
         cmethod="ward.D", #agglomeration method TODO evaluate diff options
         align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
-        cex = 1, lab.cex = 1, main = title)
-
+        cex = 1, lab.cex = 1, main = "RESEARCHERS")
+ 
 ```
 
-## COMPARE GROUPS - DENDROGRAM ELEMENTS
+### Designers 
+```{r group_dendrogram_constructs_designers, fig.height=12,  message=FALSE, warning=FALSE}
 
-```{r group_dendrogram_elements}
+## PRINT PCA BIPLOT for each participant
 
+type = "cluster_dendrograms/"
+topic = "construct_"
+level = "group/"
 
- cluster(g_researchers, along = 2, #1=constructs, 2 = elements, 0 = both (default)
-        trim=100,
-         dmethod =  "euclidean",#distance measure TODO evaluate diff options    
-        cmethod="ward.D", #agglomeration method TODO evaluate diff options
-        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
-        cex = 1, lab.cex = 1, main = "RESEARCHERS")  
-
-cluster(g_designers, along = 2, #1=constructs, 2 = elements, 0 = both (default)
-       trim=100,
+####### PRINT PLOTS TO FILE
+png(filename=paste0("plots/",level,type,topic,"DESIGNERS_dendrogram",".png"),width=15, height = 12, units = "in", res = 300) 
+cluster(g_designers, along = 1, #1=constructs, 2 = elements, 0 = both (default)
+       trim=200,
          dmethod =  "euclidean",#distance measure TODO evaluate diff options    
         cmethod="ward.D", #agglomeration method TODO evaluate diff options
         align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
         cex = 1, lab.cex = 1, main = "DESIGNERS")
+dev.off()
+
+
+####### PRINT PLOTS TO SCREEN
+cluster(g_designers, along = 1, #1=constructs, 2 = elements, 0 = both (default)
+       trim=200,
+         dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        cex = 1, lab.cex = 1, main = "DESIGNERS")
+ 
+```
+
+
+
+
+
+## DENDROGRAM ELEMENTS by GROUP
+
+### Researchers
+```{r group_dendrogram_elements_researchers,  message=FALSE, warning=FALSE}
+
+## PRINT PCA BIPLOT for each participant
+
+type = "cluster_dendrograms/"
+topic = "elements_"
+level = "group/"
+
+
+##### PRINT PLOTS TO FILE 
+ png(filename=paste0("plots/",level,type,topic,"RESEARCHERS_dendrogram",".png"),width=10, height = 4, units = "in", res = 300)
+ cluster(g_researchers, along = 2, #1=constructs, 2 = elements, 0 = both (default)
+        trim=200,
+         dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        cex = 1, lab.cex = 1, main = "RESEARCHERS")
+ dev.off()
+ 
+##### PRINT PLOTS TO SCREEN 
+ 
+ (researcher_elements <- cluster(g_researchers, along = 2, #1=constructs, 2 = elements, 0 = both (default)
+        trim=200,
+         dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        cex = 1, lab.cex = 1, main = "RESEARCHERS"))
+ 
+```
+
+### Designers
+```{r group_dendrogram_elements_designers,  message=FALSE, warning=FALSE}
+
+## PRINT PCA BIPLOT for each participant
+
+type = "cluster_dendrograms/"
+topic = "elements_"
+level = "group/"
+
+##### PRINT PLOTS TO FILE 
+plot.new()
+ png(filename=paste0("plots/",level,type,topic,"DESIGNERS_dendrogram",".png"),width=10, height = 4, units = "in", res = 300)
+ cluster(g_designers, along = 2, #1=constructs, 2 = elements, 0 = both (default)
+        trim=200,
+         dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        cex = 1, lab.cex = 1, main = "DESIGNERS")
+ dev.off()
+ 
+##### PRINT PLOTS TO SCREEN 
+ 
+ (designer_elements <- cluster(g_designers, along = 2, #1=constructs, 2 = elements, 0 = both (default)
+        trim=200,
+         dmethod =  "euclidean",#distance measure TODO evaluate diff options    
+        cmethod="ward.D", #agglomeration method TODO evaluate diff options
+        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
+        cex = 1, lab.cex = 1, main = "DESIGNERS"))
+ 
+```
+
+
+### WIP TANGLEGRAM
+```{r tanglegram}
+
+## MANUAL DENDROGRAM FOR ELEMENTS—DESIGNERES
+
+
+# get ratings 
+r <- getRatingLayer(g_designers)
+# transpose for elements 
+r <- t(r)
+# distance matrix for elements
+d <- dist(r, method = "euclidean")
+# cluster analysis
+fit.elements <- hclust(d, method = "ward.D")
+# create dendrogram tree
+dend.el_design <- as.dendrogram(fit.elements)
+# plot(dend.el_design, horiz=TRUE)
+
+
+
+## MANUAL DENDROGRAM FOR ELEMENTS
+
+# get ratings 
+r <- getRatingLayer(g_researchers)
+# transpose for elements 
+r <- t(r)
+# distance matrix for elements
+d <- dist(r, method = "euclidean")
+# cluster analysis
+fit.elements <- hclust(d, method = "ward.D")
+# create dendrogram tree
+dend.el_research <- as.dendrogram(fit.elements)
+# plot(dend.el_research, horiz=TRUE) 
+
+
+
+
+## the tanglegram / back to back dendrograms
+# l <- dendlist(dend.el_design, dend.el_research)
+# tanglegram(l)
+
+png(filename="plots/COMPARE_ELEMENTS.png",
+    width=12, height = 6, units = "in", res = 300)
+
+dendbackback(dend.el_design, dend.el_research,
+             sort = TRUE,
+             margin_inner = 8,
+             main_left = "DESIGNERS", 
+             main_right = "RESEARCHERS",
+             lab.cex = 1,
+             highlight_distinct_edges = TRUE,
+             common_subtrees_color_branches = TRUE,
+             common_subtrees_color_lines = TRUE, 
+             main="ELEMENTS by GROUP")
+
+dev.off()
+
+## to fix error in dev.off error , MAY NEED to run several times
+# while (!is.null(dev.list()))  dev.off()
+
+
+## PRINT TO SCREEN
+dendbackback(dend.el_design, dend.el_research,
+             sort = TRUE,
+             margin_inner = 8,
+             main_left = "DESIGNERS", 
+             main_right = "RESEARCHERS",
+             lab.cex = 1,
+             highlight_distinct_edges = TRUE,
+             common_subtrees_color_branches = TRUE,
+             common_subtrees_color_lines = TRUE, 
+             main="ELEMENTS by GROUP")
 
 ```
 
-## COMPARE GROUPS — PCA/BIPLOTS
+### ARF TODO pvclust on coded constructs
+
+## PCA/BIPLOTS — COMPARE GROUPS
 
 ```{r biplot-comparison}
 
