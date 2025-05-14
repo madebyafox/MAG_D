@@ -4,6 +4,7 @@ author: "Amy R Fox & Dana Hua"
 date: "2024-05-01"
 output:
   html_document:
+    # keep_md: yes
     theme: cosmo
     code_folding: hide
     fig_caption: yes
@@ -57,6 +58,8 @@ library(paletteer) #more palettes
 library(interactions) ##easier regression ixn plots.srlsy
 library(tidygraph)
 library(ggcorrplot) ##ggplot compliant correlation heatmaps
+library(webshot2) ##saving plots that aren't ggplot
+
 
 #TABLES
 library(gt)
@@ -199,14 +202,14 @@ write_csv(df_eda, file = "data/NUMERIC_CONSTRUCTS_WIDE.csv")
 
 # PARTICIPANT LEVEL
 
-
-#### Construct Correlations (RAW)
+## CORRELATION HEATMAPS 
+### Construct Correlations 
 
 ```{r construct-correlations, message=FALSE}
 
 ## LOOP all participants and render correlation heatmap on constructs
 type = "correlation_heatmaps/"
-topic = "construct"
+topic = "construct_"
 level = "participant/"
 
 i <- 1
@@ -225,20 +228,20 @@ for (l in list_all) {
   print(g)
   
   #save plot
-  ggsave(g, filename = paste0("plots/",level, type, topic, "_", title,".png"))
+  ggsave(g, filename = paste0("plots/",level, type, topic, title,".png"))
   i <- i + 1
 }
 
 #cleanup
 rm(g,c)
 ```
-#### Element Correlations (RAW)
+### Element Correlations 
 
 ```{r element-correlations, message=FALSE}
 
 ## LOOP all participants and render correlation heatmap on elements
 type = "correlation_heatmaps/"
-topic = "element"
+topic = "element_"
 level = "participant/"
 
 i <- 1
@@ -257,25 +260,35 @@ for (l in list_all) {
   print(g)
   
   #save plot
-  ggsave(g, filename = paste0("plots/",level, type, topic, "_", title,".png"))
+  ggsave(g, filename = paste0("plots/",level, type, topic, title,".png"))
   i <- i + 1
 }
 
 #cleanup
 rm(g,c)
 ```
-## Construct Dendrograms
+
+## CLUSTER DENDROGRAMS
+### Construct Dendrograms
 
 
-```{r construct-clustering-dendrograms-dana}
+```{r construct-clustering-dendrograms}
 
-# type = "clustering_dendograms/"
+#PRINT CLUSTER FOR EACH PARTICIPANT
+# # calculate cluster analysis
+# # https://docs.openrepgrid.org/articles/web/clustering.html
+
+type = "cluster_dendrograms/"
+topic = "construct_"
+level = "participant/"
 
 i <- 1
 for (l in list_all) {
-  title <- names[i]
   
-  (c <- cluster(l, along = 1,
+  # PRINT DENDROGRAM TO FILE
+  title <- names[i]
+  png(filename=paste0("plots/",level,type,topic,title,".png"), width=10, height = 5, units = "in", res = 300)
+  cluster(l, along = 1,#1=constructs, 2 = elements, 0 = both (default)
           dmethod = "euclidean",
           cmethod = "ward.D",
           align = TRUE,
@@ -283,62 +296,120 @@ for (l in list_all) {
           lab.cex = 0.8,           # Label size
           main = title,
           mar = c(2, 1, 2, 25),
-          trim=NA))
+          trim=NA)
+  # title(main = paste0(title, " - ", "Elements"), adj = 0.05, line=-1, cex.main = 0.85)
+  dev.off() #jazz for saving base plots
+
   
-  #save plot
-  # ggsave(c, filename = paste0("plots/",type,title,".png"))  
+  # PRINT DENDROGRAM TO SCREEN
+  cluster(l, along = 1,#1=constructs, 2 = elements, 0 = both (default)
+          dmethod = "euclidean",
+          cmethod = "ward.D",
+          align = TRUE,
+          cex = 0,               # Overall plot text size
+          lab.cex = 0.8,           # Label size
+          main = title,
+          mar = c(2, 1, 2, 25),
+          trim=NA)
+  
   i <- i + 1
 }
 
 ```
 
-## Element Dendrograms
+### Element Dendrograms
 
 ```{r element-clustering-dendrograms}
 
-## PRINT CLUSTER FOR EACH PARTICIPANT
-i=1
-for (l in list_all){
-  title = names[i]
+#PRINT CLUSTER FOR EACH PARTICIPANT
+# # calculate cluster analysis
+# # https://docs.openrepgrid.org/articles/web/clustering.html
 
-  # # calculate cluster analysis
-  # # https://docs.openrepgrid.org/articles/web/clustering.html
-  cluster(l, along = 2, #1=constructs, 2 = elements, 0 = both (default)
-        dmethod =  "euclidean",#distance measure TODO evaluate diff options    
-        cmethod="ward.D", #agglomeration method TODO evaluate diff options
-        align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
-        cex = 1, lab.cex = 1, main = title)  
-  i=i+1
+type = "cluster_dendrograms/"
+topic = "element_"
+level = "participant/"
+
+i <- 1
+for (l in list_all) {
+  
+  # PRINT DENDROGRAM TO FILE
+  title <- names[i]
+  png(filename=paste0("plots/",level,type,topic,title,".png"),width=10, height = 4, units = "in", res = 300)
+  cluster(l, along = 2,#1=constructs, 2 = elements, 0 = both (default)
+          dmethod = "euclidean",
+          cmethod = "ward.D",
+          align = TRUE,
+          cex = 0,               # Overall plot text size
+          lab.cex = 0.8,           # Label size
+          main = title,
+          mar = c(2, 1, 2, 25),
+          trim=NA)
+  # title(main = paste0(title, " - ", "Elements"), adj = 0.05, line=-1, cex.main = 0.85)
+  dev.off() #jazz for saving base plots
+
+  
+  # PRINT DENDROGRAM TO SCREEN
+  cluster(l, along = 2,#1=constructs, 2 = elements, 0 = both (default)
+          dmethod = "euclidean",
+          cmethod = "ward.D",
+          align = TRUE,
+          cex = 0,               # Overall plot text size
+          lab.cex = 0.8,           # Label size
+          main = title,
+          mar = c(2, 1, 2, 25),
+          trim=NA)
+  
+  i <- i + 1
 }
+
 ```
 
-## Bertin Cluster Plots
-```{r clustering-bertin-dendograms}
+## BERTIN PLOTS
+### Amy Simple Bertin Plots
+```{r simple-bertin-plots}
 
 ## PRINT BERTIN CLUSTER MAP  FOR EACH PARTICIPANT
+type = "bertin_simpleplots/"
+topic = "simpleBertin_"
+level = "participant/"
+
 i=1
 for (l in list_all){
  
   title = names[i]
   
+  png(filename=paste0("plots/",level,type,topic,title,".png"),width=12, height = 4, units = "in", res = 300)
+
   # https://docs.openrepgrid.org/articles/web/visualization-bertin.html
-  bertinCluster(l, along =0, #1=constructs, 2 = elements, 0 = both (default)
-          dmethod =  "euclidean",#distance measure TODO evaluate diff options
-          cmethod="ward.D", #agglomeration method TODO evaluate diff options
-          align = TRUE, #align b4 clustering? reverses constructs if necessary to yield maximal simmilarity
-          type = "rectangle",
-          cex = 1, lab.cex = 1,
-          trim=50, draw.axis = FALSE,
-          main=title,
-          colors = c("white", "darkred"))
-          #id=c(FALSE, FALSE))
-    
-  op <- par(fig = c(0,1,0.1,1), mai=c(0,0,0.2,0), cex.main=0.85, adj=0, new = TRUE)
-  title(title)
+  # Adjust layout segments: make bertin display area square inside full plot
+  bertin(
+    l,
+    along = 0,
+    dmethod = "euclidean",
+    cmethod = "ward.D",
+    align = TRUE,
+    trim = 100,
+    main = paste0(title),  # suppress internal title
+    colors = c("white", "darkred"),
+    lheight=0.8,
+    id = c(TRUE, FALSE)
+  )
+
+  # Overlay title in top-left
+  #par(fig = c(0, 1, 0.95, 1), mai = c(0, 0, 0, 0), new = TRUE)
+  par(fig = c(0, 1, 0.92, 1), mai = c(0, 0, 0, 0), new = TRUE)
+  plot.new()
+  title(main = title, adj = 0.05, line=-1, cex.main = 0.85)
+  
+  dev.off() #jazz for saving base plots
+
   i=i+1
 }
+
+print("ONLY SAVED TO FILE")
 ```
 
+### Dana Bertin Cluster Plots
 ```{r clustering-bertin-dendo-dana, fig.height=7.5, fig.width=8.5}
 i <- 1
 for (l in list_all) {
@@ -384,6 +455,7 @@ for (l in list_all) {
 
 ```
 
+### Dana Bertin Cluster Plots 2
 ```{r cluserting-bertin, fig.width=8}
 ## TODO WRITE SIMPLE BERTIN LOOP 
 i=1
