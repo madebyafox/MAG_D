@@ -390,7 +390,7 @@ for (l in list_all){
     align = TRUE,
     trim = 100,
     main = paste0(title),  # suppress internal title
-    colors = c("white", "darkred"),
+    colors = c("white", "black"),
     lheight=0.8,
     id = c(TRUE, FALSE)
   )
