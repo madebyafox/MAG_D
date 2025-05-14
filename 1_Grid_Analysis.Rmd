@@ -791,8 +791,8 @@ dend.el_research <- as.dendrogram(fit.elements)
 ## the tanglegram / back to back dendrograms
 # l <- dendlist(dend.el_design, dend.el_research)
 # tanglegram(l)
-
-png(filename="plots/COMPARE_ELEMENTS.png",
+plot.new()
+png(filename="plots/group/COMPARE_ELEMENTS.png",
     width=12, height = 6, units = "in", res = 300)
 
 dendbackback(dend.el_design, dend.el_research,
@@ -830,12 +830,20 @@ dendbackback(dend.el_design, dend.el_research,
 
 ## PCA/BIPLOTS — COMPARE GROUPS
 
-```{r biplot-comparison}
+### Researchers
+```{r simple-biplot-researchers_save,warning=FALSE, message=FALSE}
 
+type = "pca_biplots/"
+topic = ""
+level = "group/"
+
+plot.new()
+png(filename=paste0("plots/",level,type,topic,"RESEARCHERS_biplot",".png"))
+    # ,width=10, height = 4, units = "in", res = 300)
 
   ## RESEARCHER BIPLOT
   title = "RESEARCHERS"
-  print(title)
+  # print(title)
   biplot2d(g_researchers,
            dim = c(2,1),
            zoom = 1,
@@ -865,10 +873,60 @@ dendbackback(dend.el_design, dend.el_research,
            new = TRUE)
   title(title)
   
+dev.off()  
   
-  ## DESIGNER BIPLOT
+```
+
+```{r simple-biplot-researchers_print,warning=FALSE, message=FALSE}
+
+  ## RESEARCHER BIPLOT
+  title = "RESEARCHERS"
+  # print(title)
+  biplot2d(g_researchers,
+           dim = c(2,1),
+           zoom = 1,
+      
+           ## construct s
+           c.lines = TRUE,
+           col.c.lines= gray(0.9),
+           c.label.cex = 0.5,
+           c.labels.inside = FALSE,
+           c.label.col = "blue",
+           
+           ## elements
+           # rect.margins = c(2,2),
+           e.point.col = "red",
+           e.label.col = "red",
+           e.label.cex = 0.5, #element label size
+           
+           
+           ## size and margins 
+           mai = c(0.2,1.5,.2,1.5),
+           unity=TRUE, #just makes it neater
+           scale.e = 0.75, 
+          
+           )
+  op <- par(# fig = c(0,1,0.5,1), 
+           cex.main = 0.75, #title size
+           new = TRUE)
+  title(title)
+```
+
+
+### Designers
+```{r simple-biplot-designers_save,warning=FALSE, message=FALSE}
+
+type = "pca_biplots/"
+topic = ""
+level = "group/"
+
+plot.new()
+png(filename=paste0("plots/",level,type,topic,"DESIGNERS_biplot",".png"))
+    # ,width=10, height = 4, units = "in", res = 300)
+
+  ## DESIGNERS BIPLOT
   title = "DESIGNERS"
-  print(title)
+  # print(title)
   biplot2d(g_designers,
            dim = c(2,1),
            zoom = 1,
@@ -888,7 +946,7 @@ dendbackback(dend.el_design, dend.el_research,
            
            
            ## size and margins 
-           mai = c(0.2,1.5,.2,1.5), #margins 
+           mai = c(0.2,1.5,.2,1.5),
            unity=TRUE, #just makes it neater
            scale.e = 0.75, 
           
@@ -897,9 +955,46 @@ dendbackback(dend.el_design, dend.el_research,
            cex.main = 0.75, #title size
            new = TRUE)
   title(title)
-
-
+  
+dev.off()  
+  
 ```
+
+```{r simple-biplot-designers_print, warning=FALSE, message=FALSE}
+
+  ## DESIGNERS BIPLOT
+  title = "DESIGNERS"
+  # print(title)
+  biplot2d(g_researchers,
+           dim = c(2,1),
+           zoom = 1,
+      
+           ## construct s
+           c.lines = TRUE,
+           col.c.lines= gray(0.9),
+           c.label.cex = 0.5,
+           c.labels.inside = FALSE,
+           c.label.col = "blue",
+           
+           ## elements
+           # rect.margins = c(2,2),
+           e.point.col = "red",
+           e.label.col = "red",
+           e.label.cex = 0.5, #element label size
+           
+           
+           ## size and margins 
+           mai = c(0.2,1.5,.2,1.5),
+           unity=TRUE, #just makes it neater
+           scale.e = 0.75, 
+          
+           )
+  op <- par(# fig = c(0,1,0.5,1), 
+           cex.main = 0.75, #title size
+           new = TRUE)
+  title(title)
+```
+
 
 # ARF WIP
 
