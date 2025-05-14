@@ -368,7 +368,7 @@ for (l in list_all) {
 ### Amy Simple Bertin Plots
 ```{r simple-bertin-plots}
 
-## PRINT BERTIN CLUSTER MAP  FOR EACH PARTICIPANT
+## PRINT SIMPLE BERTIN FOR EACH PARTICIPANT
 type = "bertin_simpleplots/"
 topic = "simpleBertin_"
 level = "participant/"
@@ -528,12 +528,18 @@ clustered <- cluster(l,
 ```{r biplot}
 
 ## PRINT PCA BIPLOT for each participant
+
+type = "pca_biplots/"
+topic = "biplot2d_"
+level = "participant/"
+
 i=1
 for (l in list_all){
+  
+  ## PRINT BIPLOT TO FILE
   title = names[i]
-  
+  png(filename=paste0("plots/",level,type,topic,title,".png"),width=8, height = 8, units = "in", res = 300)
   # https://docs.openrepgrid.org/articles/web/visualization-biplot.html
-  
   biplot2d(l, 
            dim = c(2,1),
            zoom = 1,
@@ -562,11 +568,45 @@ for (l in list_all){
            cex.main = 0.75, #title size
            new = TRUE)
   title(title)
+  dev.off()
+  
+  
+  ## PRINT BIPLOT TO SCREEN
+  # https://docs.openrepgrid.org/articles/web/visualization-biplot.html
+  biplot2d(l, 
+           dim = c(2,1),
+           zoom = 1,
+      
+           ## construct s
+           c.lines = TRUE,
+           col.c.lines= gray(0.9),
+           c.label.cex = 0.5,
+           c.labels.inside = FALSE,
+           c.label.col = "blue",
+           
+           ## elements
+           # rect.margins = c(2,2),
+           e.point.col = "red",
+           e.label.col = "red",
+           e.label.cex = 0.5, #element label size
+           
+           
+           ## size and margins 
+           mai = c(0.2,1.5,.2,1.5),
+           unity=TRUE, #just makes it neater
+           scale.e = 0.75, 
+          
+           )
+  op <- par(# fig = c(0,1,0.5,1), 
+           cex.main = 0.75, #title size
+           new = TRUE)
+  title(title)
+  
+  
   i=i+1
 }
 
-  
-  
+
 ```
 
 # WIP GROUP LEVEL
