@@ -795,11 +795,11 @@ plot.new()
 png(filename="plots/group/COMPARE_ELEMENTS.png",
     width=12, height = 6, units = "in", res = 300)
 
-dendbackback(dend.el_design, dend.el_research,
+dendbackback(dend.el_research,dend.el_design,
              sort = TRUE,
              margin_inner = 8,
-             main_left = "DESIGNERS", 
-             main_right = "RESEARCHERS",
+             main_left = "RESEARCHERS", 
+             main_right = "DESIGNERS",
              lab.cex = 1,
              highlight_distinct_edges = TRUE,
              common_subtrees_color_branches = TRUE,
@@ -813,11 +813,11 @@ dev.off()
 
 
 ## PRINT TO SCREEN
-dendbackback(dend.el_design, dend.el_research,
+dendbackback(dend.el_research,dend.el_design,
              sort = TRUE,
              margin_inner = 8,
-             main_left = "DESIGNERS", 
-             main_right = "RESEARCHERS",
+             main_left = "RESEARCHERS", 
+             main_right = "DESIGNERS",
              lab.cex = 1,
              highlight_distinct_edges = TRUE,
              common_subtrees_color_branches = TRUE,
